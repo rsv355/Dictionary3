@@ -60,6 +60,7 @@ public class WordExamplePageFragment extends Fragment {
         list.setAdapter(adapter);
 
 
+
     }
 
 
