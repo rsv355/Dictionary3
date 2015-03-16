@@ -30,7 +30,7 @@ public class MeanPageActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.icon_back);
 
-        toolbar.setTitle("News Vocab");
+        toolbar.setTitle("Search");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
