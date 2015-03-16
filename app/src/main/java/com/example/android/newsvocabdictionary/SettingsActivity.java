@@ -113,12 +113,13 @@ String AMPM;
         if(hour==-1 && min==-1 && ampm ==-1){
              aTime = new StringBuilder().append(10).append(':')
                     .append("30").append(" ").append("AM").toString();
+
         }
         else {
              aTime = new StringBuilder().append(hour).append(':')
                     .append(min).append(" ").append(AMPM).toString();
 
-            updateTime(hour, min);
+
 
         }
 
