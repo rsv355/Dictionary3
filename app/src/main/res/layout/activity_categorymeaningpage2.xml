@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context="com.example.android.com.newsvocab.dictionary.BlankFragment">
+    <include layout="@layout/app_bar" />
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:padding="16dp"
+        android:background="#009688"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+       <TextView
+           android:id="@+id/txt1"
+           android:textStyle="bold"
+           android:gravity="center"
+           android:textColor="#fff"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:textSize="16sp"
+           android:text="Meaning"/>
+
+        <TextView
+            android:id="@+id/txt2"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"
+            android:text="Example"/>
+
+
+        <TextView
+            android:id="@+id/txt3"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"
+            android:text="Match"/>
+
+
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        </FrameLayout>
+
+
+    <!--   <com.webmyne.paylabas.userapp.custom_components.PagerSlidingTabStrip
+           android:id="@+id/tabs_mobiletopup"
+           android:layout_width="match_parent"
+           android:layout_height="48dp"
+           android:background="@color/color_mobiletopup"
+           app:pstsPaddingMiddle="true"/>
+
+       <android.support.v4.view.ViewPager
+           android:id="@+id/pager_mobiletopup"
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"
+           tools:context=".MainActivity"/>-->
+
+</LinearLayout>

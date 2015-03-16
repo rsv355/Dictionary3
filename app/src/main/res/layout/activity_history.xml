@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg"
+
+    tools:context=".MainActivity">
+    <include layout="@layout/app_bar" />
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/empty"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:textSize="30dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#494949"
+            android:textStyle="bold"
+            android:text="Oops, You have no word learned "/>
+    </LinearLayout>
+    <LinearLayout
+
+        android:padding="16dp"
+        android:id="@+id/linear"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ListView
+            android:layout_gravity="center"
+            android:divider="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/list">
+
+        </ListView>
+    </LinearLayout>
+</LinearLayout>

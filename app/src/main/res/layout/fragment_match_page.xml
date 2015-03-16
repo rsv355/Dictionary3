@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context="com.example.android.newsvocabdictionary.BlankFragment">
+    <!--
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">-->
+
+    <LinearLayout
+        android:padding="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/list">
+
+        </ListView>
+        <!--<TextView
+            android:id="@+id/txt1"
+            android:textSize="22sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="abc1"/>
+
+               <TextView
+                   android:id="@+id/txt2"
+                   android:textSize="22sp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="abc2"/>
+               <TextView
+                   android:id="@+id/txt3"
+                   android:textSize="22sp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="abc3"/>
+               <TextView
+                   android:id="@+id/txt4"
+                   android:textSize="22sp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="abc4"/>
+               <TextView
+                   android:id="@+id/txt5"
+                   android:textSize="22sp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="abc5"/>-->
+    </LinearLayout>
+    <!--  </ScrollView>-->
+</RelativeLayout>

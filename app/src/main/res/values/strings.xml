@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">News Vocab</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="prev"><![CDATA[< Prev]]></string>
+
+    <string-array name="language">
+        <item>English to Hindi</item>
+        <item>English to Tamil</item>
+        <item>English to Malayalam</item>
+        <item>English to Gujarati</item>
+        <item>English to Telugu</item>
+        <item>English to Marathi</item>
+        <item>English to Bengali</item>
+        <item>English to Kannada</item>
+    </string-array>
+
+    <string-array name="wordlimit">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+</resources>

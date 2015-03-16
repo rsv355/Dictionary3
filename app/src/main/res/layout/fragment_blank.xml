@@ -1,0 +1,312 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context="com.example.android.newsvocabdictionary.BlankFragment">
+
+
+<!--
+android:background="#DADBD5"
+TODO: Update blank fragment layout -->
+
+ <ScrollView
+
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+<LinearLayout
+
+    android:id="@+id/mainlinear"
+   android:layout_marginTop="5dp"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <at.markushi.ui.CircleButton
+            android:id="@+id/btncatg1"
+        android:layout_width="80dip"
+        android:layout_height="80dip"
+        android:src="@drawable/hm"
+        app:cb_color="#66C0B8"
+        app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Crime"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btncatg2"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:src="@drawable/hm"
+                app:cb_color="#66C0B8"
+                app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text=" Politics"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btncatg3"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:src="@drawable/hm"
+                app:cb_color="#66C0B8"
+                app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text=" Court"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btncatg4"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:src="@drawable/icon_law"
+                app:cb_color="#66C0B8"
+                app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Mishap"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btncatg5"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:src="@drawable/hm"
+                app:cb_color="#66C0B8"
+                app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text=" Fire"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btncatg6"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:src="@drawable/hm"
+                app:cb_color="#66C0B8"
+                app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text=" Death"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btncatg7"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:src="@drawable/hm"
+                app:cb_color="#66C0B8"
+                app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text=" Weather"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btncatg8"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:src="@drawable/hm"
+                app:cb_color="#66C0B8"
+                app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text=" Flood"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btncatg9"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:src="@drawable/hm"
+                app:cb_color="#66C0B8"
+                app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text=" Business"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btncatg10"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:src="@drawable/hm"
+                app:cb_color="#66C0B8"
+                app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Sports"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btncatg11"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:src="@drawable/hm"
+                app:cb_color="#66C0B8"
+                app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text=" Other"/>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btncatg12"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:src="@drawable/hm"
+                app:cb_color="#66C0B8"
+                app:cb_pressedRingWidth="8dip" />
+            <TextView
+                android:id="@+id/txtcatg12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text=" All"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
+
+ </ScrollView>
+
+
+</RelativeLayout>

@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.android.newsvocabdictionary.ExamplePageFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+           <TextView
+               android:textColor="#494949"
+               android:text="     "
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+              android:background="@drawable/background_tab"
+               />
+           <TextView
+               android:layout_marginLeft="5dp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="abc1"
+               android:textSize="22sp"
+               android:id="@+id/txt1"
+               android:textColor="#494949"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="abc1"
+        android:textSize="16sp"
+        android:id="@+id/txt2"
+        android:textColor="#494949"/>
+</LinearLayout>
