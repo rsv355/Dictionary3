@@ -117,6 +117,9 @@ String AMPM;
         else {
              aTime = new StringBuilder().append(hour).append(':')
                     .append(min).append(" ").append(AMPM).toString();
+
+            updateTime(hour, min);
+
         }
 
 
