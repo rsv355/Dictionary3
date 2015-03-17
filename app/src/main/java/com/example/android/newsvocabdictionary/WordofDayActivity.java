@@ -193,6 +193,29 @@ void insertactualWordofdayWORDS(){
 
     }
 
+
+    void insertdataintoDATABASE(){
+        db.open();
+        db.deleteRecord2();
+        for (int i = 0; i < words.size(); i++) {
+            db.insertRecord2(words.get(i).trim(),meang.get(i).trim());
+            //   db.insertContact("dd",3);
+        }
+        db.close();
+    }
+
+    private void Display2(Cursor c) {
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+            words.add(c.getString(c.getColumnIndex("WORD")));
+            meang.add(c.getString(c.getColumnIndex("MEANING_HIN")));
+            c.moveToNext();
+        }
+
+    }
+
     void loaddata(){
 
         try{
@@ -208,7 +231,7 @@ void insertactualWordofdayWORDS(){
 
             Toast.makeText(WordofDayActivity.this,FirstTime,Toast.LENGTH_SHORT).show();
 
-
+            // if word of day is open first time day
             if(FirstTime.equalsIgnoreCase("yes"))
             {
                 db.open();
@@ -219,9 +242,10 @@ void insertactualWordofdayWORDS(){
                 }
                 c.close();
                 db.close();
+                insertdataintoDATABASE();
             }
             else {
-
+                // if word of day is open next day
                 if (Saveddate.compareTo(todayDate) < 0) {
                     db.open();
                     Prefs.putString("FirstTime","no");
@@ -231,12 +255,25 @@ void insertactualWordofdayWORDS(){
                     }
                     c.close();
                     db.close();
+                    insertdataintoDATABASE();
 
              /*   if (date1.compareTo(date2)<0)
                 {
                     System.out.println("date2 is Greater than my date1");
                 }*/
                     // System.out.println("date2 is Greater than my date1");
+                }
+
+                // if word of day is open same day
+                else{
+                    db.open();
+                    Prefs.putString("FirstTime","no");
+                    Cursor c = db.getWordofDay();
+                    if (c.moveToFirst()) {
+                        Display2(c);
+                    }
+                    c.close();
+                    db.close();
                 }
             }
 
