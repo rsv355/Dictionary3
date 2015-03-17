@@ -161,11 +161,14 @@ public class WordofDayActivity extends ActionBarActivity {
     }*/
 
 void insertactualWordofdayWORDS(){
+
     SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
     wordlimit = preferences.getInt("wordlimit", 2);
     wordlimit+=1;
+
     FinalWords=new ArrayList<String>(wordlimit);
     words=new ArrayList<String>();
+
     boolean isMatch=false;
 
     for(int i=0;i<Main_Word.size();i++) {
@@ -268,7 +271,7 @@ void insertactualWordofdayWORDS(){
                 else{
                     db.open();
                     Prefs.putString("FirstTime","no");
-                    Cursor c = db.getWordofDay();
+                    Cursor c = db.getOldWordofDay();
                     if (c.moveToFirst()) {
                         Display2(c);
                     }
@@ -286,6 +289,7 @@ void insertactualWordofdayWORDS(){
 
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -296,7 +300,7 @@ void insertactualWordofdayWORDS(){
 
         Main_Word = new ArrayList<String>();
         meang = new ArrayList<String>();
-
+        words = new ArrayList<String>();
         Match1 = new ArrayList<String>();
         Match2 = new ArrayList<String>();
         Match3 = new ArrayList<String>();

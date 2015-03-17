@@ -261,7 +261,7 @@ public class DBAdapter {
 
     public Cursor getWordofDay( ) throws SQLException
     {
-        String selectQuery = "SELECT * FROM D_Word_Word_Of_Day";
+        String selectQuery = "SELECT * FROM D_Word_Word_Of_Day WHERE WORD NOT IN (Select WORD From D_Word_History) ";
         Cursor cursor = db.rawQuery(selectQuery, null);
         return cursor;
     }
