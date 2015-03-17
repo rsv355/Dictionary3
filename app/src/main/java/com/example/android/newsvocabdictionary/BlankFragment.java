@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.newsvocab.dictionary.R;
 import com.parse.ParseObject;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import net.qiujuer.genius.util.Log;
 
@@ -107,7 +109,6 @@ public class BlankFragment extends Fragment {
         String ans3=sdf3.format(c.getTime());
 
         tt.setText(""+ans1+"-"+ans2+"-"+ans3);*/
-
 
         btncatg1=(at.markushi.ui.CircleButton)convertview.findViewById(R.id.btncatg1);
         btncatg2=(at.markushi.ui.CircleButton)convertview.findViewById(R.id.btncatg2);

@@ -2,130 +2,74 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\libs\bolts-android-1.1.4.jar"
+        jar="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-1252365f74f9a15620f853bfcde4a725d01f60e1.jar" />
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\classes-6e51846441472444621c31b939382f5d00e12a98.jar" />
     </item>
     <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\libs\Parse-1.8.2.jar"
+        jar="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.github.qiujuer\genius\2.2.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1301ff9b8eb8813c07e3600a41fe2c1ef66b7dcf">
+        <dex dex="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\classes-6bafa79069523334898dc7ccd7c3a9cc7311f86e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.pixplicity.easyprefs\library\1.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="21c1328739dffb33d813be606d4b353465a89031">
+        <dex dex="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\classes-827e7ab89edb20f5da12e5ae11c41e60ad995532.jar" />
+    </item>
+    <item
+        jar="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\libs\Parse-1.8.2.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="c2cb0bfe37cbefd855b6faa3c9a5be833aba7300">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\pre-dexed\debug\Parse-1.8.2-6ae8b0b87d20b55022d5363ca7b0b6b68c3137ee.jar" />
+        <dex dex="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\Parse-1.8.2-a7e3258a947ba426cd53388f56ab133bb27e0429.jar" />
     </item>
     <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\libs\bolts-android-1.1.4.jar"
+        jar="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-32646891d357db76bb4ddc50e7bbb4acf39acd4a.jar" />
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\classes-029b8349e35f245c1fd05478699b18b1136f9d39.jar" />
     </item>
     <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\exploded-aar\com.github.markushi\circlebutton\1.1\classes.jar"
+        jar="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="ebe3b1f14fa79ba3cd1588acda4e6517ee9fe611">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\pre-dexed\debug\classes-c1152a3091ff52f224187e5816f2fad101c1ea7a.jar" />
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-bc4d10981e55ffc35bbfa17adb97c888293ebb97.jar" />
     </item>
     <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\pre-dexed\debug\classes-33e97d3e7d8a5108649de7fde6ad1d7a42342609.jar" />
-    </item>
-    <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\classes-b92ac40e7d5e8b008303c4443bba2fad7bacfc5f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Krishna\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
+        jar="C:\Users\Android\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\pre-dexed\debug\gson-2.3.1-50e2c2c2b4c04197b63f4d395be42bc62d874f5a.jar" />
+        <dex dex="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\gson-2.3.1-b8c0cf911b74fb3e4ce7c7bb48aa286f0de5ebbc.jar" />
     </item>
     <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.github.qiujuer\genius\2.2.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1301ff9b8eb8813c07e3600a41fe2c1ef66b7dcf">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\classes-f7efdbf3c9d3339dadaf1d69401aa1a6cb43b92f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.github.markushi\circlebutton\1.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="ebe3b1f14fa79ba3cd1588acda4e6517ee9fe611">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\classes-ccee22032e3e89d48eddd45d39ecfb3e0773c13b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\libs\Parse-1.8.2.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c2cb0bfe37cbefd855b6faa3c9a5be833aba7300">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\Parse-1.8.2-ad0afa026965899cd88b8af35c44b3ad8bcc1777.jar" />
-    </item>
-    <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-5a7fa834d1fcf99021e6ca75398f3a24decd44bc.jar" />
-    </item>
-    <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\exploded-aar\com.github.qiujuer\genius\2.2.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1301ff9b8eb8813c07e3600a41fe2c1ef66b7dcf">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\pre-dexed\debug\classes-1b49dc16963bdb8323de356d39bbeb440b52b847.jar" />
-    </item>
-    <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\classes-a56503da4cf2f5b3b303fde40b1f40d1f007dda6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\exploded-aar\com.pixplicity.easyprefs\library\1.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="21c1328739dffb33d813be606d4b353465a89031">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\pre-dexed\debug\classes-14c22528bd5933c4889b81670c4b54d9e7c38a85.jar" />
-    </item>
-    <item
-        jar="C:\Users\Krishna\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="C:\Users\Android\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-1aeabbabca1c46cb265136037e3db774a795c9f8.jar" />
+        <dex dex="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-cf9a162d63ab3f14cb857ff231d5d9e3066ac14e.jar" />
     </item>
     <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.github.markushi\circlebutton\1.1\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-84b682591cd5b4a133c28d9f3ce672c94e872efc.jar" />
+        sha1="ebe3b1f14fa79ba3cd1588acda4e6517ee9fe611">
+        <dex dex="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\classes-7aa7adc958c2b15b04fdff80edd64b7b5d4ab58e.jar" />
     </item>
     <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\exploded-aar\com.pixplicity.easyprefs\library\1.3\classes.jar"
+        jar="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\libs\bolts-android-1.1.4.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="21c1328739dffb33d813be606d4b353465a89031">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\classes-c32ff4c5275d1b889f5a3d2f73e94e2d5e14edd5.jar" />
-    </item>
-    <item
-        jar="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Krishna\AndroidStudioProjects\Dictionary2\app\build\intermediates\pre-dexed\debug\classes-388510823aad6cfcda298731c7e84f1720485594.jar" />
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="C:\Users\Android\AndroidStudioProjects\Dictionary3\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-065ce91c7fbdac8bba90b4fc0acc589d703a4470.jar" />
     </item>
 
 </items>

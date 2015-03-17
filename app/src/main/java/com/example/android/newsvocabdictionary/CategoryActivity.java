@@ -120,7 +120,7 @@ public class CategoryActivity extends ActionBarActivity {
 
                 Prefs.remove("istextchange");
                 Intent i = new Intent(CategoryActivity.this, CategoryMeanPageActivity.class);
-                i.putExtra("word", catg.get(position));
+                i.putExtra("word", catg.get(position).trim());
                 startActivity(i);
             }
         });
@@ -183,7 +183,7 @@ public class CategoryActivity extends ActionBarActivity {
             rowView = inflater.inflate(R.layout.item_list_example, null);
 */
             TextView txt = (TextView)convertView.findViewById(R.id.txt1);
-            txt.setText(result.get(position)+" - "+result2.get(position));
+            txt.setText(result.get(position).trim()+" - "+result2.get(position).trim());
 
           /*  holder.tv=(TextView) rowView.findViewById(R.id.txt1);
             holder.tv.setText(result[position]);

@@ -226,6 +226,14 @@ public class DBAdapter {
         return cursor;
     }
 
+    public Cursor getALLMatchingWords( ) throws SQLException
+    {
+        String selectQuery = "SELECT MATCH1,MATCH2,MATCH3,MATCH4,MATCH5 FROM D_Word_ENG_HIN";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        return cursor;
+    }
+
     public Cursor getHistoryWord(String WORD) throws SQLException
     {
         String selectQuery = "SELECT * FROM D_Word_History WHERE WORD ="+"\""+WORD.toString().trim()+"\"";
@@ -233,6 +241,15 @@ public class DBAdapter {
 
         return cursor;
     }
+
+    public Cursor getWordofDay( ) throws SQLException
+    {
+        String selectQuery = "SELECT * FROM D_Word_ENG_HIN WHERE WORD NOT IN (Select WORD From D_Word_History) ";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        return cursor;
+    }
+
 
     public Cursor getAllHistoryWord() throws SQLException
     {

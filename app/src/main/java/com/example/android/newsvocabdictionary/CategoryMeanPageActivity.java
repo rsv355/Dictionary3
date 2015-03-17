@@ -61,7 +61,7 @@ public class CategoryMeanPageActivity extends ActionBarActivity {
         tabs.setViewPager(pager);
 
         tabs.setDividerColor(Color.parseColor("#ffffff"));
-        texttoSend=getIntent().getStringExtra("word");
+        texttoSend=getIntent().getStringExtra("word").trim();
 
 
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
@@ -148,7 +148,7 @@ public class CategoryMeanPageActivity extends ActionBarActivity {
             FragmentTransaction ft = manager.beginTransaction();
 
             Bundle bundle=new Bundle();
-            bundle.putString("word", texttoSend);
+            bundle.putString("word", texttoSend.trim());
 
             if (position == 0) {
                 MeaningPageFragment bm =  new MeaningPageFragment();

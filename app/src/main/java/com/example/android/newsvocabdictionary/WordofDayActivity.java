@@ -3,6 +3,7 @@ package com.example.android.newsvocabdictionary;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
@@ -17,20 +18,42 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.newsvocab.dictionary.R;
 import com.pixplicity.easyprefs.library.Prefs;
 
+import net.qiujuer.genius.util.Log;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+
+import base.DBAdapter;
+import base.WORD_MNG;
 
 public class WordofDayActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
     ListView list;
     int wordlimit;
+    DBAdapter db;
     LinearLayout linear;
     public static CustomAdapter adapter;
     public static ArrayList<String> words;
     public static ArrayList<String> meang;
+
+
+    public static ArrayList<String> Main_Word ;
+    public static ArrayList<String> Match1 ;
+    public static ArrayList<String> Match2 ;
+    public static ArrayList<String> Match3 ;
+    public static ArrayList<String> Match4 ;
+    public static ArrayList<String> Match5 ;
+
+
+    public static ArrayList<String> FinalWords ;
+
     String[] word_in_string = {"Word1","Word2","Word3","Word4","Word5"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +71,7 @@ public class WordofDayActivity extends ActionBarActivity {
             }
         });
 
-
+        db= new DBAdapter(WordofDayActivity.this);
         list = (ListView)findViewById(R.id.list);
         linear = (LinearLayout)findViewById(R.id.linear);
 
@@ -58,21 +81,193 @@ public class WordofDayActivity extends ActionBarActivity {
         animation();
     }
 
+    private void Display(Cursor c) {
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+
+          //  newobj.WORD = c.getString(c.getColumnIndex("WORD"));
+            Main_Word.add(c.getString(c.getColumnIndex("WORD")));
+            meang.add(c.getString(c.getColumnIndex("MEANING_HIN")));
+
+            if(c.getString(c.getColumnIndex("MATCH1"))==null){
+                Match1.add("NA");
+            }
+            else{
+                Match1.add(c.getString(c.getColumnIndex("MATCH1")));
+
+            }
+
+            if(c.getString(c.getColumnIndex("MATCH2"))==null){
+                Match2.add("NA");
+            }
+            else{
+                Match2.add(c.getString(c.getColumnIndex("MATCH2")));
+            }
+
+            if(c.getString(c.getColumnIndex("MATCH3"))==null){
+                Match3.add("NA");
+            }
+            else{
+                Match3.add(c.getString(c.getColumnIndex("MATCH3")));
+            }
+
+            if(c.getString(c.getColumnIndex("MATCH4"))==null){
+                Match4.add("NA");
+            }
+            else{
+                Match4.add(c.getString(c.getColumnIndex("MATCH4")));
+            }
+
+            if(c.getString(c.getColumnIndex("MATCH5"))==null){
+                Match5.add("NA");
+            }
+            else{
+                Match5.add(c.getString(c.getColumnIndex("MATCH5")));
+            }
+
+
+
+
+
+        //    AllWords.add(newobj);
+         //   ActualWords.add(newobj);
+            //    catg.add(c.getString(c.getColumnIndex("WORD")));
+            //    meang.add(c.getString(c.getColumnIndex("MEANING_HIN")));
+            c.moveToNext();
+        }
+
+
+
+        insertactualWordofdayWORDS();
+    }
+
+  /*  private void Display2(Cursor c) {
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+
+            if(AllWords)
+            catg.add(c.getString(c.getColumnIndex("MATCH1")));
+            catg.add(c.getString(c.getColumnIndex("MATCH2")));
+            catg.add(c.getString(c.getColumnIndex("MATCH3")));
+            catg.add(c.getString(c.getColumnIndex("MATCH4")));
+            catg.add(c.getString(c.getColumnIndex("MATCH5")));
+            c.moveToNext();
+        }
+
+    }*/
+
+void insertactualWordofdayWORDS(){
+    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+    wordlimit = preferences.getInt("wordlimit", 2);
+    wordlimit+=1;
+    FinalWords=new ArrayList<String>(wordlimit);
+    words=new ArrayList<String>();
+    boolean isMatch=false;
+
+    for(int i=0;i<Main_Word.size();i++) {
+        isMatch=false;
+
+        for (int j = 0; j < Main_Word.size(); j++) {
+            if (Main_Word.get(i).trim().equalsIgnoreCase(Match1.get(j).trim())) {
+                isMatch=true;
+                break;
+            }
+            else{
+                isMatch=false;
+            }
+        }
+        if(!isMatch) {
+            FinalWords.add(Main_Word.get(i).trim());
+        }
+    }
+
+
+    for(int i=0;i<wordlimit;i++){
+        words.add(FinalWords.get(i));
+    }
+
+
+    }
+
+    void loaddata(){
+
+        try{
+
+            Calendar cal = Calendar.getInstance();
+
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            String todayDate = df.format(cal.getTime());
+
+            String Saveddate = Prefs.getString("date","null");
+
+            String FirstTime = Prefs.getString("FirstTime","yes");
+
+            Toast.makeText(WordofDayActivity.this,FirstTime,Toast.LENGTH_SHORT).show();
+
+
+            if(FirstTime.equalsIgnoreCase("yes"))
+            {
+                db.open();
+                Prefs.putString("FirstTime","no");
+                Cursor c = db.getWordofDay();
+                if (c.moveToFirst()) {
+                    Display(c);
+                }
+                c.close();
+                db.close();
+            }
+            else {
+
+                if (Saveddate.compareTo(todayDate) < 0) {
+                    db.open();
+                    Prefs.putString("FirstTime","no");
+                    Cursor c = db.getWordofDay();
+                    if (c.moveToFirst()) {
+                        Display(c);
+                    }
+                    c.close();
+                    db.close();
+
+             /*   if (date1.compareTo(date2)<0)
+                {
+                    System.out.println("date2 is Greater than my date1");
+                }*/
+                    // System.out.println("date2 is Greater than my date1");
+                }
+            }
+
+
+        }catch(Exception e){
+            Log.e("exce", e.toString());
+        }
+
+
+
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+       /* SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         wordlimit = preferences.getInt("wordlimit", 2);
+        wordlimit+=1;*/
 
-
-        words = new ArrayList<String>();
+        Main_Word = new ArrayList<String>();
         meang = new ArrayList<String>();
 
-        for(int i=0;i<wordlimit+1;i++){
-            words.add(word_in_string[i]);
-            meang.add(word_in_string[i]);
-        }
+        Match1 = new ArrayList<String>();
+        Match2 = new ArrayList<String>();
+        Match3 = new ArrayList<String>();
+        Match4 = new ArrayList<String>();
+        Match5 = new ArrayList<String>();
+
+        loaddata();
+
 
 
         adapter = new CustomAdapter(WordofDayActivity.this, words,meang);
@@ -85,7 +280,7 @@ public class WordofDayActivity extends ActionBarActivity {
 
                 Prefs.remove("istextchange1");
                 Intent i = new Intent(WordofDayActivity.this, WordofDayMeanPageActivity.class);
-                i.putExtra("word", words.get(position));
+                i.putExtra("word", words.get(position).trim());
                 startActivity(i);
             }
         });
@@ -102,6 +297,7 @@ public class WordofDayActivity extends ActionBarActivity {
     public class CustomAdapter extends BaseAdapter {
         ArrayList<String> result;
         ArrayList<String> result2;
+
         Context context;
         private LayoutInflater inflater = null;
 
@@ -109,6 +305,7 @@ public class WordofDayActivity extends ActionBarActivity {
             // TODO Auto-generated constructor stub
             result = prgmNameList;
             result2 = prgmNameList2;
+
             this.context = ctx;
             //  inflater = ( LayoutInflater )context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
@@ -141,7 +338,7 @@ public class WordofDayActivity extends ActionBarActivity {
             rowView = inflater.inflate(R.layout.item_list_example, null);
 */
             TextView txt = (TextView) convertView.findViewById(R.id.txt1);
-            txt.setText(result.get(position) + " - " + result2.get(position));
+            txt.setText(result.get(position).trim() + " - " + result2.get(position).trim());
 
           /*  holder.tv=(TextView) rowView.findViewById(R.id.txt1);
             holder.tv.setText(result[position]);

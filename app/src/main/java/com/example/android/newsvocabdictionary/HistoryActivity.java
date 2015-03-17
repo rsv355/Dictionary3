@@ -97,7 +97,7 @@ if(catg.size()==0){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Prefs.remove("istextchange3");
                 Intent i = new Intent(HistoryActivity.this, HistoryMeanPageActivity.class);
-                i.putExtra("word", catg.get(position));
+                i.putExtra("word", catg.get(position).trim());
                 startActivity(i);
             }
         });
@@ -162,7 +162,7 @@ if(catg.size()==0){
             rowView = inflater.inflate(R.layout.item_list_example, null);
 */
             TextView txt = (TextView)convertView.findViewById(R.id.txt1);
-            txt.setText(result.get(position)+" - "+result2.get(position));
+            txt.setText(result.get(position).trim()+" - "+result2.get(position).trim());
 
           /*  holder.tv=(TextView) rowView.findViewById(R.id.txt1);
             holder.tv.setText(result[position]);
