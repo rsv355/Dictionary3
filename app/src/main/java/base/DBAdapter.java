@@ -30,6 +30,34 @@ public class DBAdapter {
                     + "WORD String not null," +
                       "MEANING text );";
 
+
+    private static final String DATABASE_CREATE_WORD_OF_DAY =
+            "create table D_Word_Word_Of_Day (_id integer primary key autoincrement, "
+                    + "CATG_ID String not null," +
+                    "WORD text not null," +
+                    "PRON_ENG text," +
+                    "MEANING_HIN text not null," +
+                    "MEANING2 text," +
+                    "MEANING3 text," +
+                    "MEANING4 text," +
+                    "MEANING5 text ," +
+                    "EX1 text ," +
+                    "EX2 text ," +
+                    "EX3 text ," +
+                    "EX4 text ," +
+                    "EX5 text ," +
+                    "MATCH1 text ," +
+                    "MATCH2 text ," +
+                    "MATCH3 text ," +
+                    "MATCH4 text ," +
+                    "MATCH5 text ," +
+                    "HIN_EX1 text ," +
+                    "HIN_EX2 text ," +
+                    "HIN_EX3 text ," +
+                    "HIN_EX4 text ," +
+                    "HIN_EX5 text );";
+
+
     private static final String DATABASE_CREATE =
             "create table D_Word_ENG_HIN (_id integer primary key autoincrement, "
                     + "CATG_ID String not null," +
@@ -79,7 +107,7 @@ public class DBAdapter {
             try {
                 db.execSQL(DATABASE_CREATE);
                 db.execSQL(DATABASE_CREATE_HISTORY);
-
+                db.execSQL(DATABASE_CREATE_WORD_OF_DAY);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -172,6 +200,48 @@ public class DBAdapter {
         return db.insert(DATABASE_TABLE, null, initialValues);
     }
 
+    public long insertRecord2(String CATG_ID,String WORD, String PRON_ENG,String MEANING_HIN
+            ,String MEANING2,String MEANING3,String MEANING4,String MEANING5
+            ,String EX1,String EX2,String EX3,String EX4,String EX5
+            ,String MATCH1,String MATCH2,String MATCH3,String MATCH4,String MATCH5
+            ,String HIN_EX1,String HIN_EX2,String HIN_EX3,String HIN_EX4,String HIN_EX5)
+    {
+        ContentValues initialValues = new ContentValues();
+
+        initialValues.put("CATG_ID", CATG_ID);//1
+        initialValues.put("WORD", WORD);//2
+
+        initialValues.put("PRON_ENG", PRON_ENG);//3
+
+        initialValues.put("MEANING_HIN", MEANING_HIN);//4
+
+        initialValues.put("MEANING2", MEANING2);//5
+        initialValues.put("MEANING3", MEANING3);//6
+        initialValues.put("MEANING4", MEANING4);//7
+        initialValues.put("MEANING5", MEANING5);//8
+
+        initialValues.put("EX1", EX1);//9
+        initialValues.put("EX2", EX2);//10
+        initialValues.put("EX3", EX3);//11
+        initialValues.put("EX4", EX4);//12
+        initialValues.put("EX5", EX5);//13
+
+        initialValues.put("MATCH1", MATCH1);//14
+        initialValues.put("MATCH2", MATCH2);//15
+        initialValues.put("MATCH3", MATCH3);//16
+        initialValues.put("MATCH4", MATCH4);//17
+        initialValues.put("MATCH5", MATCH5);//18
+
+        initialValues.put("HIN_EX1", HIN_EX1);//19
+        initialValues.put("HIN_EX2", HIN_EX2);//20
+        initialValues.put("HIN_EX3", HIN_EX3);//21
+        initialValues.put("HIN_EX4", HIN_EX4);//22
+        initialValues.put("HIN_EX5", HIN_EX5);//23
+
+        Log.e("insert ","ok");
+
+        return db.insert(DATABASE_CREATE_WORD_OF_DAY, null, initialValues);
+    }
 
     //---deletes a particular contact---
     public void deleteRecord( )
@@ -181,6 +251,13 @@ public class DBAdapter {
       //  return db.delete(DATABASE_TABLE,null );
     }
 
+
+    public void deleteRecord2( )
+    {
+        Log.e("record ddelted ","ok");
+        db.execSQL("delete  from "+ DATABASE_CREATE_WORD_OF_DAY);
+        //  return db.delete(DATABASE_TABLE,null );
+    }
     //---retrieves all the contacts---
     /*public Cursor getAllContacts()
     {
@@ -222,23 +299,15 @@ public class DBAdapter {
     {
         String selectQuery = "SELECT * FROM D_Word_ENG_HIN";
         Cursor cursor = db.rawQuery(selectQuery, null);
-
         return cursor;
     }
 
-    public Cursor getALLMatchingWords( ) throws SQLException
-    {
-        String selectQuery = "SELECT MATCH1,MATCH2,MATCH3,MATCH4,MATCH5 FROM D_Word_ENG_HIN";
-        Cursor cursor = db.rawQuery(selectQuery, null);
 
-        return cursor;
-    }
 
     public Cursor getHistoryWord(String WORD) throws SQLException
     {
         String selectQuery = "SELECT * FROM D_Word_History WHERE WORD ="+"\""+WORD.toString().trim()+"\"";
         Cursor cursor = db.rawQuery(selectQuery, null);
-
         return cursor;
     }
 
@@ -246,7 +315,6 @@ public class DBAdapter {
     {
         String selectQuery = "SELECT * FROM D_Word_ENG_HIN WHERE WORD NOT IN (Select WORD From D_Word_History) ";
         Cursor cursor = db.rawQuery(selectQuery, null);
-
         return cursor;
     }
 
@@ -258,6 +326,15 @@ public class DBAdapter {
 
         return cursor;
     }
+
+    public Cursor getOldWordofDay() throws SQLException
+    {
+        String selectQuery = "SELECT * FROM D_Word_Word_Of_Day";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        return cursor;
+    }
+
 
     public long insertHistoryRecord(String WORD,String MEANING)
     {
