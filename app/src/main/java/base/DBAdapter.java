@@ -186,7 +186,7 @@ public class DBAdapter {
         initialValues.put("WORD", WORD);//1
         initialValues.put("MEANING", MEANING);//2
 
-        Log.e("insert ","ok");
+        Log.e("insert in meaning ","ok");
 
         return db.insert(DATABASE_CREATE_WORD_OF_DAY, null, initialValues);
     }
@@ -261,7 +261,7 @@ public class DBAdapter {
 
     public Cursor getWordofDay( ) throws SQLException
     {
-        String selectQuery = "SELECT * FROM D_Word_Word_Of_Day WHERE WORD NOT IN (Select WORD From D_Word_History) ";
+        String selectQuery = "SELECT * FROM D_Word_ENG_HIN WHERE WORD NOT IN (Select WORD From D_Word_History) ";
         Cursor cursor = db.rawQuery(selectQuery, null);
         return cursor;
     }
