@@ -1,5 +1,6 @@
 package base;
 
+import android.app.ActionBar;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 
 import android.widget.ImageView;
@@ -80,6 +82,24 @@ public class MyDrawerActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_drawer);
         nitView();
+/*
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowCustomEnabled(true);
+        // actionBar.setDisplayShowTitleEnabled(false);
+        // actionBar.setIcon(R.drawable.ic_action_search);
+
+        LayoutInflater inflator = (LayoutInflater) this
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflator.inflate(R.layout.autocomplete, null);
+
+        actionBar.setCustomView(v);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, leftSliderData);
+        AutoCompleteTextView textView = (AutoCompleteTextView) v
+                .findViewById(R.id.editText1);
+        textView.setAdapter(adapter);*/
 
 
         Log.e("inside", "Mydrawr activity");
@@ -106,7 +126,9 @@ public class MyDrawerActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         MenuItem searchItem = menu.findItem(R.id.action_search);
+
         SearchManager searchManager = (SearchManager) getSystemService(MyDrawerActivity.this.SEARCH_SERVICE);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         //*** setOnQueryTextFocusChangeListener ***
