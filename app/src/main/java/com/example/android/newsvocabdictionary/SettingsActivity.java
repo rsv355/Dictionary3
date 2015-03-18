@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
@@ -26,8 +27,11 @@ import android.widget.ToggleButton;
 import com.newsvocab.dictionary.R;
 import com.pixplicity.easyprefs.library.Prefs;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import base.DBAdapter;
 
 public class SettingsActivity extends ActionBarActivity {
 
@@ -41,8 +45,11 @@ TextView txttime;
     static final int TIME_DIALOG_ID = 1111;
     private int hour;
     private int minute;
-
+    DBAdapter db;
     int hour2,min,ampm;
+
+    public static ArrayList<String> words;
+    public static ArrayList<String> meang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +58,7 @@ TextView txttime;
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.icon_back);
-
+        db= new DBAdapter(SettingsActivity.this);
         toolbar.setTitle("Settings");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -292,9 +299,51 @@ void setWordlimitSpinner(){
         int pos = preferences.getInt("wordlimit", 2);
         spWordLimit.setSelection(pos);
 
+
+  words = new ArrayList<String>();
+  meang = new ArrayList<String>();
+
+
+    db.open();
+    Prefs.putString("FirstTime","no");
+    Cursor c = db.getWordofDay();
+    if (c.moveToFirst()) {
+        Display(c);
+    }
+    c.close();
+    db.close();
+    insertdataintoDATABASE();
+
+
  }
 
-void setLanguageSpinner(){
+    private void Display(Cursor c) {
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int wordlimit = preferences.getInt("wordlimit", 2);
+        wordlimit+=1;
+
+        c.moveToFirst();
+        while (c.getPosition()<wordlimit) {
+            words.add(c.getString(c.getColumnIndex("WORD")));
+            meang.add(c.getString(c.getColumnIndex("MEANING_HIN")));
+            c.moveToNext();
+        }
+    }
+
+
+    void insertdataintoDATABASE(){
+        db.open();
+        db.deleteRecord2();
+        for (int i = 0; i < words.size(); i++) {
+            db.insertRecord2(words.get(i).trim(),meang.get(i).trim());
+            //   db.insertContact("dd",3);
+        }
+        db.close();
+    }
+
+
+    void setLanguageSpinner(){
         /*SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         Langpos = preferences.getInt("language", 0);*/
 
