@@ -67,8 +67,13 @@ public class MyDrawerActivity extends ActionBarActivity {
     private String[] leftSliderData = {"Home","Words of the Day","Words Per Day","History", "Contact Us", "Share App", "Settings"};
 
     private boolean draweropen=false;
+    private boolean searchTextopen=false;
     DBAdapter db;
     ArrayList<String> temp = new ArrayList<String>();
+    TextView mTitleTextView;
+    AutoCompleteTextView autoText;
+    ImageButton imgNav;
+    ImageButton imgSrch;
 
 
 
@@ -97,11 +102,11 @@ public class MyDrawerActivity extends ActionBarActivity {
       //  LayoutInflater mInflater = LayoutInflater.from(this);
 
        // View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
-        final TextView mTitleTextView = (TextView) findViewById(R.id.title_text);
-        final AutoCompleteTextView autoText = (AutoCompleteTextView)findViewById(R.id.auto);
+          mTitleTextView = (TextView) findViewById(R.id.title_text);
+          autoText = (AutoCompleteTextView)findViewById(R.id.auto);
         mTitleTextView.setText("News Vocab");
 
-        ImageButton imgNav = (ImageButton)
+         imgNav = (ImageButton)
                 findViewById(R.id.imgNav);
         imgNav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,13 +134,13 @@ public class MyDrawerActivity extends ActionBarActivity {
 
 
 
-        final ImageButton imgSrch = (ImageButton)
+         imgSrch = (ImageButton)
                 findViewById(R.id.imageButton);
         imgSrch.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-
+                searchTextopen=true;
                 imgSrch.setVisibility(view.GONE);
                 mTitleTextView.setVisibility(view.GONE);
                 autoText.setVisibility(view.VISIBLE);
@@ -294,6 +299,12 @@ public class MyDrawerActivity extends ActionBarActivity {
 
         if(draweropen){
             drawerLayout.closeDrawers();
+        }
+        if(searchTextopen){
+            searchTextopen=false;
+            imgSrch.setVisibility(View.VISIBLE);
+            mTitleTextView.setVisibility(View.VISIBLE);
+            autoText.setVisibility(View.GONE);
         }
         else {
             super.onBackPressed();
