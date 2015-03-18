@@ -33,6 +33,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -82,33 +83,55 @@ public class MyDrawerActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_drawer);
         nitView();
-/*
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowCustomEnabled(true);
-        // actionBar.setDisplayShowTitleEnabled(false);
-        // actionBar.setIcon(R.drawable.ic_action_search);
+     /*   ActionBar mActionBar = getActionBar();
+        mActionBar.setDisplayShowHomeEnabled(false);
+        mActionBar.setDisplayShowTitleEnabled(false);
+      */
+      //  LayoutInflater mInflater = LayoutInflater.from(this);
 
-        LayoutInflater inflator = (LayoutInflater) this
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflator.inflate(R.layout.autocomplete, null);
+       // View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
+        TextView mTitleTextView = (TextView) findViewById(R.id.title_text);
+        AutoCompleteTextView autoText = (AutoCompleteTextView)findViewById(R.id.auto);
+        mTitleTextView.setText("News Vocab");
 
-        actionBar.setCustomView(v);
+        ImageButton imgNav = (ImageButton)
+                findViewById(R.id.imgNav);
+        imgNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, leftSliderData);
-        AutoCompleteTextView textView = (AutoCompleteTextView) v
-                .findViewById(R.id.editText1);
-        textView.setAdapter(adapter);*/
+                if(draweropen){
+                    drawerLayout.closeDrawers();
+                }
+                else {
+                    drawerLayout.openDrawer(drawerLayout);
+                }
+            }
+        });
 
+        ImageButton imgSrch = (ImageButton)
+                findViewById(R.id.imageButton);
+        imgSrch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "search Clicked!",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+       /* mActionBar.setCustomView(mCustomView);
+        mActionBar.setDisplayShowCustomEnabled(true);
+*/
 
         Log.e("inside", "Mydrawr activity");
 
-        if (toolbar != null) {
+       /* if (toolbar != null) {
             toolbar.setTitle("News Vocab");
             setSupportActionBar(toolbar);
         }
-
+*/
         initDrawer();
 
        /* Intent i = new Intent(MyDrawerActivity.this, MainActivity.class);
@@ -121,6 +144,7 @@ public class MyDrawerActivity extends ActionBarActivity {
 
     }
 
+/*
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -131,7 +155,8 @@ public class MyDrawerActivity extends ActionBarActivity {
 
         SearchManager searchManager = (SearchManager) getSystemService(MyDrawerActivity.this.SEARCH_SERVICE);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        //*** setOnQueryTextFocusChangeListener ***
+        /*/
+/*** setOnQueryTextFocusChangeListener ***
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
 
@@ -203,20 +228,21 @@ public class MyDrawerActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+*/
 
     private void nitView() {
 
         //  btnLogout = (ButtonRectangle)findViewById(R.id.btnLogout);
         leftDrawerList = (ListView) findViewById(R.id.left_drawer);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+       /* toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         toolbar.setBackgroundColor(Color.parseColor("#009688"));// whats app color 009688,,00695F  --brown color 725232
-
+*/
 
        // toolbar.setBackgroundColor(Color.parseColor("#6B8F00"));
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
-        Toolbar.LayoutParams layoutParams = new Toolbar.LayoutParams(
+       /* Toolbar.LayoutParams layoutParams = new Toolbar.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 Gravity.TOP | Gravity.RIGHT);
@@ -224,7 +250,7 @@ public class MyDrawerActivity extends ActionBarActivity {
        layoutParams.width = (int) AppUtils.convertDpToPixel(32,MyDrawerActivity.this);
        layoutParams.height = (int)AppUtils.convertDpToPixel(32,MyDrawerActivity.this);
         layoutParams.rightMargin = 16;
-
+*/
 
     }
 

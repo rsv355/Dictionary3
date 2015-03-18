@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:background="#009688" >
+
+
+    <ImageButton
+        android:id="@+id/imgNav"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+         android:background="@null"
+        android:src="@drawable/icon_nav" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/ic_launcher" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@null"
+        android:text="New Vocab"
+        android:textColor="#fff"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="22sp"
+        />
+
+
+
+    <AutoCompleteTextView
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:id="@+id/auto"/>
+
+    <ImageButton
+        android:layout_marginTop="12dp"
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:background="@null"
+        android:src="@drawable/ic_action_search" />
+</LinearLayout>
+</LinearLayout>
