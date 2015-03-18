@@ -24,6 +24,7 @@ import com.parse.ParseQuery;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -56,6 +57,7 @@ int hour,min,ampm;
         super.onResume();
 
     }
+
 
     void startalarm(){
 
@@ -113,6 +115,7 @@ int hour,min,ampm;
 
 
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,10 +150,19 @@ int hour,min,ampm;
             Prefs.putString("language_name", TABLE_NAME);
 
 
-            startalarm();
+          //  startalarm();
+
+
 
 
             firstProcess();
+
+            Calendar c = Calendar.getInstance();
+            System.out.println("Current time => " + c.getTime());
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDate = df.format(c.getTime());
+
+            Prefs.putString("date1",formattedDate);
 
         }
         else{
@@ -283,6 +295,41 @@ private void processDownloadDatabase(){
         });
     }
 
+
+ private void processDowloadandSQLinsertGROPUTABLE(  ) {
+
+     dialog= ProgressDialog.show(this,"Please Wait","downloading dictionary from server...",true);
+     dialog.setCancelable(false);
+
+     ParseQuery<ParseObject> query = ParseQuery.getQuery("Word_of_day");
+     // query.whereEqualTo("DATABASE_VERSION", "ALL3");
+     query.findInBackground(new FindCallback<ParseObject>() {
+         @Override
+         public void done(List<ParseObject> parseObject, ParseException e) {
+             if (e == null) {
+
+                 db.open();
+                 db.deleteRecordGROUPTABLE();
+                 for (int i = 0; i < parseObject.size(); i++) {
+                     db.insertRecordGROUPTABLE(parseObject.get(i).getString("GROUP_NAME"));
+                 }
+
+                 db.close();
+
+                 CountDownTimer countDownTimer;
+                 countDownTimer = new MyCountDownTimer(10000, 1000); // 1000 = 1s
+                 countDownTimer.start();
+
+
+             } else {
+                 Toast.makeText(getApplicationContext(), "Error to fetch details !!!", Toast.LENGTH_SHORT).show();
+
+             }
+
+         }
+     });
+    }
+
 private void processDowloadandSQLinsert(final String dataVersion){
 
     dialog= ProgressDialog.show(this,"Please Wait","downloading dictionary from server...",true);
@@ -296,7 +343,6 @@ private void processDowloadandSQLinsert(final String dataVersion){
             if (e == null) {
                 // check for database
                 // check for database
-
                 db.open();
                 db.deleteRecord();
                 for (int i = 0; i < parseObject.size(); i++) {
@@ -310,7 +356,7 @@ private void processDowloadandSQLinsert(final String dataVersion){
                             , parseObject.get(i).getString("HIN_EX1"), parseObject.get(i).getString("HIN_EX2"), parseObject.get(i).getString("HIN_EX3")
                             , parseObject.get(i).getString("HIN_EX4"), parseObject.get(i).getString("HIN_EX5")
                     );
-                    //   db.insertContact("dd",3);
+
                 }
 
                 db.close();
@@ -318,9 +364,7 @@ private void processDowloadandSQLinsert(final String dataVersion){
                 Prefs.putString("DATABASE_VERSION", dataVersion);
                 dialog.dismiss();
 
-                CountDownTimer countDownTimer;
-                countDownTimer = new MyCountDownTimer(10000, 1000); // 1000 = 1s
-                countDownTimer.start();
+                processDowloadandSQLinsertGROPUTABLE();
 
 
             } else {

@@ -31,8 +31,14 @@ public class DBAdapter {
                       "MEANING text );";
 
 
+
+    private static final String DATABASE_CREATE_GROUP =
+            "create table Word_Of_Day (_id integer primary key autoincrement, "+
+                    "GROUP_NAME String not null );";
+
+
     private static final String DATABASE_CREATE_WORD_OF_DAY =
-            "create table D_Word_Word_Of_Day (_id integer primary key autoincrement, "+
+            "create table D_Word_Of_Day (_id integer primary key autoincrement, "+
                     "WORD String not null," +
                     "MEANING text );";
 
@@ -86,6 +92,7 @@ public class DBAdapter {
             try {
                 db.execSQL(DATABASE_CREATE);
                 db.execSQL(DATABASE_CREATE_HISTORY);
+                db.execSQL(DATABASE_CREATE_GROUP);
                 db.execSQL(DATABASE_CREATE_WORD_OF_DAY);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -99,6 +106,9 @@ public class DBAdapter {
                     + newVersion + ", which will destroy all old data");
             db.execSQL("DROP TABLE IF EXISTS D_Word_ENG_HIN");
             db.execSQL("DROP TABLE IF EXISTS D_Word_History");
+
+            db.execSQL("DROP TABLE IF EXISTS D_Word_Word_Of_Day");
+            db.execSQL("DROP TABLE IF EXISTS Word_Of_Day");
             onCreate(db);
         }
     }
@@ -179,6 +189,17 @@ public class DBAdapter {
         return db.insert(DATABASE_TABLE, null, initialValues);
     }
 
+
+    public long insertRecordGROUPTABLE(String GROUPNAME1)
+    {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("GROUP_NAME", GROUPNAME1);//1
+
+        Log.e("insert in group ","ok");
+
+        return db.insert("Word_Of_Day", null, initialValues);
+    }
+
     public long insertRecord2(String WORD,String MEANING)
     {
         ContentValues initialValues = new ContentValues();
@@ -188,7 +209,7 @@ public class DBAdapter {
 
         Log.e("insert in meaning ","ok");
 
-        return db.insert(DATABASE_CREATE_WORD_OF_DAY, null, initialValues);
+        return db.insert("D_Word_Of_Day", null, initialValues);
     }
 
     //---deletes a particular contact---
@@ -199,11 +220,18 @@ public class DBAdapter {
       //  return db.delete(DATABASE_TABLE,null );
     }
 
+    public void deleteRecordGROUPTABLE( )
+    {
+        Log.e("record ddelted ","ok");
+        db.execSQL("delete  from Word_Of_Day");
+        //  return db.delete(DATABASE_TABLE,null );
+    }
+
 
     public void deleteRecord2( )
     {
         Log.e("record ddelted ","ok");
-        db.execSQL("delete  from "+ DATABASE_CREATE_WORD_OF_DAY);
+        db.execSQL("delete  from D_Word_Of_Day");
         //  return db.delete(DATABASE_TABLE,null );
     }
     //---retrieves all the contacts---
@@ -261,7 +289,8 @@ public class DBAdapter {
 
     public Cursor getWordofDay( ) throws SQLException
     {
-        String selectQuery = "SELECT * FROM D_Word_ENG_HIN WHERE WORD NOT IN (Select WORD From D_Word_History) ";
+        String selectQuery = "SELECT * FROM D_Word_ENG_HIN WHERE WORD IN (select GROUP_NAME from Word_Of_Day WHERE GROUP_NAME NOT IN" +
+                "(Select WORD From D_Word_History)) ";
         Cursor cursor = db.rawQuery(selectQuery, null);
         return cursor;
     }
@@ -277,7 +306,7 @@ public class DBAdapter {
 
     public Cursor getOldWordofDay() throws SQLException
     {
-        String selectQuery = "SELECT * FROM D_Word_Word_Of_Day";
+        String selectQuery = "SELECT * FROM D_Word_Of_Day";
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         return cursor;

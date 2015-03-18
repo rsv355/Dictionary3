@@ -28,6 +28,7 @@ import net.qiujuer.genius.util.Log;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import base.DBAdapter;
 import base.WORD_MNG;
@@ -84,117 +85,15 @@ public class WordofDayActivity extends ActionBarActivity {
     private void Display(Cursor c) {
 
         c.moveToFirst();
-
         while (!c.isAfterLast()) {
-
-          //  newobj.WORD = c.getString(c.getColumnIndex("WORD"));
-            Main_Word.add(c.getString(c.getColumnIndex("WORD")));
+            words.add(c.getString(c.getColumnIndex("WORD")));
             meang.add(c.getString(c.getColumnIndex("MEANING_HIN")));
-
-            if(c.getString(c.getColumnIndex("MATCH1"))==null){
-                Match1.add("NA");
-            }
-            else{
-                Match1.add(c.getString(c.getColumnIndex("MATCH1")));
-
-            }
-
-            if(c.getString(c.getColumnIndex("MATCH2"))==null){
-                Match2.add("NA");
-            }
-            else{
-                Match2.add(c.getString(c.getColumnIndex("MATCH2")));
-            }
-
-            if(c.getString(c.getColumnIndex("MATCH3"))==null){
-                Match3.add("NA");
-            }
-            else{
-                Match3.add(c.getString(c.getColumnIndex("MATCH3")));
-            }
-
-            if(c.getString(c.getColumnIndex("MATCH4"))==null){
-                Match4.add("NA");
-            }
-            else{
-                Match4.add(c.getString(c.getColumnIndex("MATCH4")));
-            }
-
-            if(c.getString(c.getColumnIndex("MATCH5"))==null){
-                Match5.add("NA");
-            }
-            else{
-                Match5.add(c.getString(c.getColumnIndex("MATCH5")));
-            }
-
-
-
-
-
-        //    AllWords.add(newobj);
-         //   ActualWords.add(newobj);
-            //    catg.add(c.getString(c.getColumnIndex("WORD")));
-            //    meang.add(c.getString(c.getColumnIndex("MEANING_HIN")));
             c.moveToNext();
         }
-
-
-
-        insertactualWordofdayWORDS();
-    }
-
-  /*  private void Display2(Cursor c) {
-
-        c.moveToFirst();
-
-        while (!c.isAfterLast()) {
-
-            if(AllWords)
-            catg.add(c.getString(c.getColumnIndex("MATCH1")));
-            catg.add(c.getString(c.getColumnIndex("MATCH2")));
-            catg.add(c.getString(c.getColumnIndex("MATCH3")));
-            catg.add(c.getString(c.getColumnIndex("MATCH4")));
-            catg.add(c.getString(c.getColumnIndex("MATCH5")));
-            c.moveToNext();
-        }
-
-    }*/
-
-void insertactualWordofdayWORDS(){
-
-    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-    wordlimit = preferences.getInt("wordlimit", 2);
-    wordlimit+=1;
-
-    FinalWords=new ArrayList<String>(wordlimit);
-    words=new ArrayList<String>();
-
-    boolean isMatch=false;
-
-    for(int i=0;i<Main_Word.size();i++) {
-        isMatch=false;
-
-        for (int j = 0; j < Main_Word.size(); j++) {
-            if (Main_Word.get(i).trim().equalsIgnoreCase(Match1.get(j).trim())) {
-                isMatch=true;
-                break;
-            }
-            else{
-                isMatch=false;
-            }
-        }
-        if(!isMatch) {
-            FinalWords.add(Main_Word.get(i).trim());
-        }
     }
 
 
-    for(int i=0;i<wordlimit;i++){
-        words.add(FinalWords.get(i));
-    }
 
-
-    }
 
 
     void insertdataintoDATABASE(){
@@ -207,15 +106,19 @@ void insertactualWordofdayWORDS(){
         db.close();
     }
 
-    private void Display2(Cursor c) {
+    private void Display2(Cursor c1) {
+        meang = new ArrayList<String>();
+        words = new ArrayList<String>();
 
-        c.moveToFirst();
+        c1.moveToFirst();
+        while (!c1.isAfterLast()) {
 
-        while (!c.isAfterLast()) {
-            words.add(c.getString(c.getColumnIndex("WORD")));
-            meang.add(c.getString(c.getColumnIndex("MEANING_HIN")));
-            c.moveToNext();
+            words.add(c1.getString(c1.getColumnIndex("WORD")));
+            meang.add(c1.getString(c1.getColumnIndex("MEANING")));
+            c1.moveToNext();
         }
+
+     //   adapter.notifyDataSetChanged();
 
     }
 
@@ -223,20 +126,34 @@ void insertactualWordofdayWORDS(){
 
         try{
 
+            Date td = new Date();
             Calendar cal = Calendar.getInstance();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String todayDateString = df.format(cal.getTime());
+            String SaveddateString = Prefs.getString("date1","null");
 
-            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-            String todayDate = df.format(cal.getTime());
+            Date savedDate = df.parse(SaveddateString);
+            Date todayDate = df.parse(todayDateString);
 
-            String Saveddate = Prefs.getString("date","null");
+           /* Calendar calsavedDate = Calendar.getInstance();
+            Calendar caltodayDate = Calendar.getInstance();
+
+            calsavedDate.setTime(savedDate);
+            caltodayDate.setTime(todayDate);
+
+            SimpleDateFormat sdf1 = new SimpleDateFormat("dd");
+            String ansSaved = sdf1.format(calsavedDate.getTime());
+            String ansToday = sdf1.format(caltodayDate.getTime());*/
+
 
             String FirstTime = Prefs.getString("FirstTime","yes");
-
-            Toast.makeText(WordofDayActivity.this,FirstTime,Toast.LENGTH_SHORT).show();
+     //    Toast.makeText(WordofDayActivity.this,""+savedDate+"="+todayDate,Toast.LENGTH_SHORT).show();
 
             // if word of day is open first time day
             if(FirstTime.equalsIgnoreCase("yes"))
             {
+            //    Toast.makeText(WordofDayActivity.this,"First time",Toast.LENGTH_SHORT).show();
+
                 db.open();
                 Prefs.putString("FirstTime","no");
                 Cursor c = db.getWordofDay();
@@ -249,9 +166,12 @@ void insertactualWordofdayWORDS(){
             }
             else {
                 // if word of day is open next day
-                if (Saveddate.compareTo(todayDate) < 0) {
+                if (todayDate.after(savedDate)) {
+               //     Toast.makeText(WordofDayActivity.this,"new date",Toast.LENGTH_SHORT).show();
+
                     db.open();
                     Prefs.putString("FirstTime","no");
+                    Prefs.putString("date1",todayDateString);
                     Cursor c = db.getWordofDay();
                     if (c.moveToFirst()) {
                         Display(c);
@@ -269,13 +189,15 @@ void insertactualWordofdayWORDS(){
 
                 // if word of day is open same day
                 else{
+                  //  Toast.makeText(WordofDayActivity.this,"old date",Toast.LENGTH_SHORT).show();
+
                     db.open();
                     Prefs.putString("FirstTime","no");
-                    Cursor c = db.getOldWordofDay();
-                    if (c.moveToFirst()) {
-                        Display2(c);
+                    Cursor c1 = db.getOldWordofDay();
+                    if (c1.moveToFirst()) {
+                        Display2(c1);
                     }
-                    c.close();
+                    c1.close();
                     db.close();
                 }
             }
@@ -283,6 +205,8 @@ void insertactualWordofdayWORDS(){
 
         }catch(Exception e){
             Log.e("exce", e.toString());
+            Toast.makeText(WordofDayActivity.this,e.toString(),Toast.LENGTH_SHORT).show();
+
         }
 
 
@@ -298,14 +222,9 @@ void insertactualWordofdayWORDS(){
         wordlimit = preferences.getInt("wordlimit", 2);
         wordlimit+=1;*/
 
-        Main_Word = new ArrayList<String>();
+
         meang = new ArrayList<String>();
         words = new ArrayList<String>();
-        Match1 = new ArrayList<String>();
-        Match2 = new ArrayList<String>();
-        Match3 = new ArrayList<String>();
-        Match4 = new ArrayList<String>();
-        Match5 = new ArrayList<String>();
 
         loaddata();
 

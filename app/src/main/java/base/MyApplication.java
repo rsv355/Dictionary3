@@ -29,13 +29,7 @@ public class MyApplication extends Application{
         // intializing the Shared prefernces
         Prefs.initPrefs(this);
 
-        Calendar c = Calendar.getInstance();
-        System.out.println("Current time => " + c.getTime());
 
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        String formattedDate = df.format(c.getTime());
-
-        Prefs.putString("date",formattedDate);
 
 //end of oncreate
     }

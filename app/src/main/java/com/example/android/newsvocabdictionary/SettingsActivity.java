@@ -59,22 +59,23 @@ TextView txttime;
                 finish();
             }
         });
-        toggle = (ToggleButton)findViewById(R.id.toggle);
+
+    //    toggle = (ToggleButton)findViewById(R.id.toggle);
         spWordLimit= (Spinner)findViewById(R.id.spWordLimit);
         spLanguage= (Spinner)findViewById(R.id.spLanguage);
-        txttime = (TextView)findViewById(R.id.txttime);
+     //   txttime = (TextView)findViewById(R.id.txttime);
 
        /* Animation anim = AnimationUtils.loadAnimation(this, R.anim.translate);
         anim.reset();
         txt1.clearAnimation();
         txt1.startAnimation(anim);*/
 
-        txttime.setOnClickListener(new View.OnClickListener() {
+      /*  txttime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialog(TIME_DIALOG_ID);
             }
-        });
+        });*/
 
 
 
@@ -97,7 +98,7 @@ TextView txttime;
 //        ******** display current time on screen End *******
 
 
-        int hour = Prefs.getInt("hours", -1);
+     /*   int hour = Prefs.getInt("hours", -1);
         int min = Prefs.getInt("minutes", -1);
         int ampm = Prefs.getInt("ampm", -1);
 
@@ -125,7 +126,7 @@ String AMPM;
 
 
         txttime.setText(aTime);
-
+*/
 
     }
 
@@ -305,10 +306,10 @@ void setLanguageSpinner(){
     @Override
     protected void onResume() {
         super.onResume();
-        toggle.setChecked(true);
+      //  toggle.setChecked(true);
 
         spLanguage.clearFocus();
-        setToggle();
+     //   setToggle();
         setWordlimitSpinner();
         setLanguageSpinner();
 
@@ -385,7 +386,7 @@ spWordLimit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         });
 
 
-        toggle.setOnClickListener(new View.OnClickListener() {
+       /* toggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(toggle.isChecked()){
@@ -407,14 +408,14 @@ spWordLimit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 }
 
             }
-        });
+        });*/
     }
 
-void cancelalarm(){
+/*void cancelalarm(){
     AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
     alarmManager.cancel(pendingIntent);
     alarmManager.cancel(SplashActivity.pendingIntent);
-}
+}*/
 
 
 //end of main class
