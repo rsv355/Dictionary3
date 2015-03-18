@@ -269,7 +269,7 @@ TODO: Update blank fragment layout -->
                 android:id="@+id/btncatg11"
                 android:layout_width="80dip"
                 android:layout_height="80dip"
-                android:src="@drawable/hm"
+                android:src="@drawable/icon_other"
                 app:cb_color="#66C0B8"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
@@ -290,7 +290,7 @@ TODO: Update blank fragment layout -->
                 android:id="@+id/btncatg12"
                 android:layout_width="80dip"
                 android:layout_height="80dip"
-                android:src="@drawable/hm"
+                android:src="@drawable/icon_all"
                 app:cb_color="#66C0B8"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
