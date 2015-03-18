@@ -53,6 +53,8 @@ import com.newsvocab.dictionary.R;
 
 import net.qiujuer.genius.util.Log;
 
+import java.util.ArrayList;
+
 
 public class MyDrawerActivity extends ActionBarActivity {
 
@@ -65,6 +67,9 @@ public class MyDrawerActivity extends ActionBarActivity {
     private String[] leftSliderData = {"Home","Words of the Day","Words Per Day","History", "Contact Us", "Share App", "Settings"};
 
     private boolean draweropen=false;
+    DBAdapter db;
+    ArrayList<String> temp = new ArrayList<String>();
+
 
 
     private int[] imagelist = {
@@ -83,6 +88,8 @@ public class MyDrawerActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_drawer);
         nitView();
+        db= new DBAdapter(MyDrawerActivity.this);
+
      /*   ActionBar mActionBar = getActionBar();
         mActionBar.setDisplayShowHomeEnabled(false);
         mActionBar.setDisplayShowTitleEnabled(false);
@@ -90,8 +97,8 @@ public class MyDrawerActivity extends ActionBarActivity {
       //  LayoutInflater mInflater = LayoutInflater.from(this);
 
        // View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
-        TextView mTitleTextView = (TextView) findViewById(R.id.title_text);
-        AutoCompleteTextView autoText = (AutoCompleteTextView)findViewById(R.id.auto);
+        final TextView mTitleTextView = (TextView) findViewById(R.id.title_text);
+        final AutoCompleteTextView autoText = (AutoCompleteTextView)findViewById(R.id.auto);
         mTitleTextView.setText("News Vocab");
 
         ImageButton imgNav = (ImageButton)
@@ -109,14 +116,30 @@ public class MyDrawerActivity extends ActionBarActivity {
             }
         });
 
-        ImageButton imgSrch = (ImageButton)
+
+
+        db.open();
+        Cursor c = db.getSuggest();
+        if (c.moveToFirst()) {
+            Display(c);
+        }
+        db.close();
+        ArrayAdapter<String> adapter11 = new ArrayAdapter<String>(MyDrawerActivity.this,android.R.layout.simple_list_item_1, temp);
+        autoText.setAdapter(adapter11);
+
+
+
+        final ImageButton imgSrch = (ImageButton)
                 findViewById(R.id.imageButton);
         imgSrch.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "search Clicked!",
-                        Toast.LENGTH_LONG).show();
+
+                imgSrch.setVisibility(view.GONE);
+                mTitleTextView.setVisibility(view.GONE);
+                autoText.setVisibility(view.VISIBLE);
+
             }
         });
 
@@ -143,6 +166,18 @@ public class MyDrawerActivity extends ActionBarActivity {
 
 
     }
+
+    private void Display(Cursor c) {
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+            temp.add(c.getString(c.getColumnIndex("WORD")));
+            c.moveToNext();
+       }
+
+    }
+
 
 /*
 
