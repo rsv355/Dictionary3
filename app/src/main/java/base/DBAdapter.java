@@ -278,6 +278,13 @@ public class DBAdapter {
         return cursor;
     }
 
+    public Cursor getSuggest() throws SQLException
+    {
+        String selectQuery = "SELECT WORD FROM D_Word_ENG_HIN";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        return cursor;
+    }
+
 
 
     public Cursor getHistoryWord(String WORD) throws SQLException

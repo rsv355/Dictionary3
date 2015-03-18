@@ -20,10 +20,20 @@
 
         </activity>
 
+
+        <provider
+            android:authorities="com.example.android.newsvocabdictionary.SampleRecentSuggestionsProvider"
+            android:name="com.example.android.newsvocabdictionary.SampleRecentSuggestionsProvider"/>
+
+
+
         <activity android:name="base.MyDrawerActivity"
             android:screenOrientation="portrait">
 
-        </activity>
+
+
+
+    </activity>
 
         <activity android:name="com.example.android.newsvocabdictionary.HistoryMeanPageActivity"
             android:screenOrientation="portrait"> </activity>
@@ -58,6 +68,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/noAnimTheme"
             > </activity>
+
+
+
 
 
         <activity android:name="com.example.android.newsvocabdictionary.SplashActivity"

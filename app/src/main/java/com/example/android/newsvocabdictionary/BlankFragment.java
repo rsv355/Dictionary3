@@ -1,6 +1,7 @@
 package com.example.android.newsvocabdictionary;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,10 +25,12 @@ import net.qiujuer.genius.util.Log;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import base.DBAdapter;
+import base.MyDrawerActivity;
 
 
 /**
@@ -50,6 +55,10 @@ public class BlankFragment extends Fragment {
     List<ParseObject> objects;
     ParseObject gameScore;
      DBAdapter db;
+
+    AutoCompleteTextView auto;
+    String[] temp2;
+    ArrayList<String> temp = new ArrayList<String>();
     private OnFragmentInteractionListener mListener;
 
 
@@ -84,6 +93,22 @@ public class BlankFragment extends Fragment {
         }
     }
 
+    private void Display(Cursor c) {
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+            temp.add(c.getString(c.getColumnIndex("WORD")));
+            c.moveToNext();
+        }
+
+        temp2 = new String[temp.size()];
+
+        for(int i=0;i<temp.size();i++){
+            temp2[i]=temp.get(i);
+        }
+
+    }
 
 
     @Override
@@ -92,10 +117,26 @@ public class BlankFragment extends Fragment {
         // Inflate the layout for this fragment
         View convertview = inflater.inflate(R.layout.fragment_blank, container, false);
 
+        db= new DBAdapter(getActivity());
+
+        auto = (AutoCompleteTextView)convertview.findViewById(R.id.auto);
+
+
+        db.open();
+        Cursor c = db.getSuggest();
+        if (c.moveToFirst()) {
+            Display(c);
+                }
+        db.close();
+
+
+
+
+        ArrayAdapter<String> adapter11 = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, temp2);
+        auto.setAdapter(adapter11);
 
         Log.e("load","blank frag");
 
-        db= new DBAdapter(getActivity());
 
        /* TextView tt = (TextView)convertview.findViewById(R.id.tt);
 

@@ -1,15 +1,21 @@
 package base;
 
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.BaseColumns;
+import android.provider.SearchRecentSuggestions;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -24,8 +30,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,9 +42,11 @@ import com.example.android.newsvocabdictionary.ContactUsActivity;
 import com.example.android.newsvocabdictionary.HistoryActivity;
 import com.example.android.newsvocabdictionary.MeanPageActivity;
 
+import com.example.android.newsvocabdictionary.SampleRecentSuggestionsProvider;
 import com.example.android.newsvocabdictionary.SettingsActivity;
 import com.example.android.newsvocabdictionary.WordofDayActivity;
 import com.newsvocab.dictionary.R;
+
 
 import net.qiujuer.genius.util.Log;
 
@@ -94,12 +104,15 @@ public class MyDrawerActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchManager searchManager = (SearchManager) getSystemService(MyDrawerActivity.this.SEARCH_SERVICE);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         //*** setOnQueryTextFocusChangeListener ***
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+
         searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
 
             @Override
@@ -110,10 +123,17 @@ public class MyDrawerActivity extends ActionBarActivity {
             }
         });
 
+
+
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
+
+
+                SearchRecentSuggestions suggestions = new SearchRecentSuggestions(MyDrawerActivity.this,SampleRecentSuggestionsProvider.AUTHORITY,SampleRecentSuggestionsProvider.MODE);
+                suggestions.saveRecentQuery(query, null);
 
 
                 Intent i = new Intent(MyDrawerActivity.this, MeanPageActivity.class);
@@ -126,6 +146,7 @@ public class MyDrawerActivity extends ActionBarActivity {
 
             @Override
             public boolean onQueryTextChange(String searchQuery) {
+
 
                 return true;
             }
