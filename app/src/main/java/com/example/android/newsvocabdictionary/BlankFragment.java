@@ -56,9 +56,7 @@ public class BlankFragment extends Fragment {
     ParseObject gameScore;
      DBAdapter db;
 
-    AutoCompleteTextView auto;
-    String[] temp2;
-    ArrayList<String> temp = new ArrayList<String>();
+
     private OnFragmentInteractionListener mListener;
 
 
@@ -93,22 +91,6 @@ public class BlankFragment extends Fragment {
         }
     }
 
-    private void Display(Cursor c) {
-
-        c.moveToFirst();
-
-        while (!c.isAfterLast()) {
-            temp.add(c.getString(c.getColumnIndex("WORD")));
-            c.moveToNext();
-        }
-
-        temp2 = new String[temp.size()];
-
-        for(int i=0;i<temp.size();i++){
-            temp2[i]=temp.get(i);
-        }
-
-    }
 
 
     @Override
@@ -117,23 +99,8 @@ public class BlankFragment extends Fragment {
         // Inflate the layout for this fragment
         View convertview = inflater.inflate(R.layout.fragment_blank, container, false);
 
-        db= new DBAdapter(getActivity());
-
-        auto = (AutoCompleteTextView)convertview.findViewById(R.id.auto);
 
 
-        db.open();
-        Cursor c = db.getSuggest();
-        if (c.moveToFirst()) {
-            Display(c);
-                }
-        db.close();
-
-
-
-
-        ArrayAdapter<String> adapter11 = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, temp2);
-        auto.setAdapter(adapter11);
 
         Log.e("load","blank frag");
 

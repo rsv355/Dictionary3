@@ -32,10 +32,6 @@ public class DBAdapter {
 
 
 
-    private static final String DATABASE_CREATE_GROUP =
-            "create table Word_Of_Day (_id integer primary key autoincrement, "+
-                    "GROUP_NAME String not null );";
-
 
     private static final String DATABASE_CREATE_WORD_OF_DAY =
             "create table D_Word_Of_Day (_id integer primary key autoincrement, "+
@@ -48,7 +44,7 @@ public class DBAdapter {
                     + "CATG_ID String not null," +
                       "WORD text not null," +
                       "PRON_ENG text," +
-                      "MEANING_HIN text not null," +
+                      "MEANING_HIN text," +
                       "MEANING2 text," +
                       "MEANING3 text," +
                       "MEANING4 text," +
@@ -67,7 +63,8 @@ public class DBAdapter {
                       "HIN_EX2 text ," +
                       "HIN_EX3 text ," +
                       "HIN_EX4 text ," +
-                      "HIN_EX5 text );";
+                      "HIN_EX5 text ," +
+                      "GROUP_NAME text not null );";
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -92,7 +89,6 @@ public class DBAdapter {
             try {
                 db.execSQL(DATABASE_CREATE);
                 db.execSQL(DATABASE_CREATE_HISTORY);
-                db.execSQL(DATABASE_CREATE_GROUP);
                 db.execSQL(DATABASE_CREATE_WORD_OF_DAY);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -108,7 +104,6 @@ public class DBAdapter {
             db.execSQL("DROP TABLE IF EXISTS D_Word_History");
 
             db.execSQL("DROP TABLE IF EXISTS D_Word_Word_Of_Day");
-            db.execSQL("DROP TABLE IF EXISTS Word_Of_Day");
             onCreate(db);
         }
     }
@@ -146,7 +141,7 @@ public class DBAdapter {
 
 
     //---insert a contact into the database---
-    public long insertRecord(String CATG_ID,String WORD, String PRON_ENG,String MEANING_HIN
+    public long insertRecord(String CATG_ID,String GROUP_NAME,String WORD, String PRON_ENG,String MEANING_HIN
                               ,String MEANING2,String MEANING3,String MEANING4,String MEANING5
                               ,String EX1,String EX2,String EX3,String EX4,String EX5
                               ,String MATCH1,String MATCH2,String MATCH3,String MATCH4,String MATCH5
@@ -184,21 +179,15 @@ public class DBAdapter {
         initialValues.put("HIN_EX4", HIN_EX4);//22
         initialValues.put("HIN_EX5", HIN_EX5);//23
 
+        initialValues.put("GROUP_NAME", GROUP_NAME);//24
+
         Log.e("insert ","ok");
 
         return db.insert(DATABASE_TABLE, null, initialValues);
     }
 
 
-    public long insertRecordGROUPTABLE(String GROUPNAME1)
-    {
-        ContentValues initialValues = new ContentValues();
-        initialValues.put("GROUP_NAME", GROUPNAME1);//1
 
-        Log.e("insert in group ","ok");
-
-        return db.insert("Word_Of_Day", null, initialValues);
-    }
 
     public long insertRecord2(String WORD,String MEANING)
     {
@@ -296,7 +285,7 @@ public class DBAdapter {
 
     public Cursor getWordofDay( ) throws SQLException
     {
-        String selectQuery = "SELECT * FROM D_Word_ENG_HIN WHERE WORD IN (select GROUP_NAME from Word_Of_Day WHERE GROUP_NAME NOT IN" +
+        String selectQuery = "SELECT * FROM D_Word_ENG_HIN WHERE GROUP_NAME IN (select GROUP_NAME from Word_Of_Day WHERE GROUP_NAME NOT IN" +
                 "(Select WORD From D_Word_History)) ";
         Cursor cursor = db.rawQuery(selectQuery, null);
         return cursor;

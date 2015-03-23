@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:background="#009688" >
+        android:background="#0F9572" >
        <ImageButton
             android:id="@+id/imgNav"
             android:layout_width="wrap_content"
@@ -55,9 +55,14 @@
             <AutoCompleteTextView
                 android:visibility="gone"
                 android:layout_weight="1"
+                android:singleLine="true"
                 android:padding="16dp"
                 android:layout_alignParentRight="true"
                 android:layout_width="0dp"
+                android:focusable="true"
+                android:imeActionLabel="Search"
+                android:focusableInTouchMode="true"
+                android:imeOptions="actionSearch"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="8dp"
@@ -92,6 +97,7 @@
 
         <!-- navigation drawer -->
         <RelativeLayout
+            android:id="@+id/relativLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="left|start"

@@ -296,7 +296,7 @@ private void processDownloadDatabase(){
     }
 
 
- private void processDowloadandSQLinsertGROPUTABLE(  ) {
+ /*private void processDowloadandSQLinsertGROPUTABLE(  ) {
 
      dialog= ProgressDialog.show(this,"Please Wait","downloading dictionary from server...",true);
      dialog.setCancelable(false);
@@ -328,7 +328,7 @@ private void processDownloadDatabase(){
 
          }
      });
-    }
+    }*/
 
 private void processDowloadandSQLinsert(final String dataVersion){
 
@@ -347,7 +347,7 @@ private void processDowloadandSQLinsert(final String dataVersion){
                 db.deleteRecord();
                 for (int i = 0; i < parseObject.size(); i++) {
 
-                    db.insertRecord(parseObject.get(i).getString("CATG_ID"), parseObject.get(i).getString("WORD"), parseObject.get(i).getString("PRON_ENG")
+                    db.insertRecord(parseObject.get(i).getString("CATG_ID"),parseObject.get(i).getString("GROUP_NAME"), parseObject.get(i).getString("WORD"), parseObject.get(i).getString("PRON_ENG")
                             , parseObject.get(i).getString("MEANING_HIN"), parseObject.get(i).getString("MEANING2"), parseObject.get(i).getString("MEANING3")
                             , parseObject.get(i).getString("MEANING4"), parseObject.get(i).getString("MEANING5"), parseObject.get(i).getString("EX1")
                             , parseObject.get(i).getString("EX2"), parseObject.get(i).getString("EX3"), parseObject.get(i).getString("EX4")
@@ -364,7 +364,11 @@ private void processDowloadandSQLinsert(final String dataVersion){
                 Prefs.putString("DATABASE_VERSION", dataVersion);
                 dialog.dismiss();
 
-                processDowloadandSQLinsertGROPUTABLE();
+                CountDownTimer countDownTimer;
+                countDownTimer = new MyCountDownTimer(10000, 1000); // 1000 = 1s
+                countDownTimer.start();
+
+            //    processDowloadandSQLinsertGROPUTABLE();
 
 
             } else {
@@ -379,7 +383,7 @@ private void processDowloadandSQLinsert(final String dataVersion){
 
 
 private boolean checkInternet(){
-  ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(SplashActivity.this.CONNECTIVITY_SERVICE);
+  /*ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(SplashActivity.this.CONNECTIVITY_SERVICE);
     if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
             connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
         //we are connected to a network
@@ -387,8 +391,8 @@ private boolean checkInternet(){
         return true;
     } else {
         return false;
-    }
-   // return true;
+    }*/
+  return true;
 
 }
 

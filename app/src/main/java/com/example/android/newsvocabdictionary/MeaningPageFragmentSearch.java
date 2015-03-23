@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.ParseObject;
 import com.newsvocab.dictionary.R;
@@ -35,7 +36,8 @@ public class MeaningPageFragmentSearch extends Fragment implements
 
     List<ParseObject> objects;
     ParseObject gameScore;
-    TextView txt,prnoun1,mean1,ex1,ex11;
+    TextView txt,prnoun1,mean1,ex1,ex11,dash,sm1,sm2,expTitle,smTitle;
+    View line1,line2;
     private TextToSpeech tts;
     DBAdapter db;
     ImageView imgaudio;
@@ -44,7 +46,7 @@ public class MeaningPageFragmentSearch extends Fragment implements
     public static ArrayList<String> exp2;
     public static ArrayList<String> match;
     public static ArrayList<String> mean;
-    LinearLayout empty,mainlinear;
+    LinearLayout empty,mainlinear,linearExp;
     public static ListView meanListView;
     int i,j,k,a;
 
@@ -99,6 +101,16 @@ public class MeaningPageFragmentSearch extends Fragment implements
         ex1 = (TextView)footer.findViewById(R.id.ex1);
         ex11 = (TextView)footer.findViewById(R.id.ex11);
 
+        expTitle= (TextView)footer.findViewById(R.id.expTitle);
+        line1= (View)footer.findViewById(R.id.line1);
+        line2= (View)footer.findViewById(R.id.line2);
+        smTitle= (TextView)footer.findViewById(R.id.smTitle);
+        linearExp = (LinearLayout)footer.findViewById(R.id.linearExp);
+
+        sm1 = (TextView)footer.findViewById(R.id.sm1);
+        sm2 = (TextView)footer.findViewById(R.id.sm2);
+
+
         meanListView.addFooterView(footer);
         meanListView.addHeaderView(header);
 
@@ -126,6 +138,7 @@ public class MeaningPageFragmentSearch extends Fragment implements
 
         meanListView = (ListView)convertview.findViewById(R.id.meanListView);
 
+        dash = (TextView)convertview.findViewById(R.id.dash);
         prnoun1= (TextView)convertview.findViewById(R.id.prnoun1);
         //  mean1= (TextView)convertview.findViewById(R.id.mean1);
 
@@ -177,9 +190,15 @@ public class MeaningPageFragmentSearch extends Fragment implements
 
 
 
+        if(c.getString(9).equalsIgnoreCase("")){
+            linearExp.setVisibility(View.GONE);
+             }
+        else{
+            linearExp.setVisibility(View.VISIBLE);
+            ex1.setText(c.getString(9));
+            ex11.setText("\'"+c.getString(19)+"\'");
 
-        ex1.setText(c.getString(9));
-        ex11.setText("\'"+c.getString(19)+"\'");
+        }
 
         exp = new ArrayList<String>();
         exp2 = new ArrayList<String>();

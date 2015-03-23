@@ -23,11 +23,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -36,6 +38,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,7 +68,7 @@ public class MyDrawerActivity extends ActionBarActivity {
     private ListView leftDrawerList;
     private ArrayAdapter<String> navigationDrawerAdapter;
     private String[] leftSliderData = {"Home","Words of the Day","Words Per Day","History", "Contact Us", "Share App", "Settings"};
-
+RelativeLayout relativLayout;
     private boolean draweropen=false;
     private boolean searchTextopen=false;
     DBAdapter db;
@@ -106,20 +109,7 @@ public class MyDrawerActivity extends ActionBarActivity {
           autoText = (AutoCompleteTextView)findViewById(R.id.auto);
         mTitleTextView.setText("News Vocab");
 
-         imgNav = (ImageButton)
-                findViewById(R.id.imgNav);
-        imgNav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                if(draweropen){
-                    drawerLayout.closeDrawers();
-                }
-                else {
-                    drawerLayout.openDrawer(drawerLayout);
-                }
-            }
-        });
 
 
 
@@ -144,9 +134,30 @@ public class MyDrawerActivity extends ActionBarActivity {
                 imgSrch.setVisibility(view.GONE);
                 mTitleTextView.setVisibility(view.GONE);
                 autoText.setVisibility(view.VISIBLE);
+                autoText.requestFocus();
+                autoText.setFocusable(true);
+                autoText.setFocusableInTouchMode(true);
+
+
 
             }
         });
+
+        autoText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+
+                    Intent i = new Intent(MyDrawerActivity.this, MeanPageActivity.class);
+                    i.putExtra("word",autoText.getText().toString().trim());
+                    startActivity(i);
+
+                    return true;
+
+
+            }
+        });
+
 
 
        /* mActionBar.setCustomView(mCustomView);
@@ -271,7 +282,7 @@ public class MyDrawerActivity extends ActionBarActivity {
 */
 
     private void nitView() {
-
+        relativLayout = (RelativeLayout)findViewById(R.id.relativLayout);
         //  btnLogout = (ButtonRectangle)findViewById(R.id.btnLogout);
         leftDrawerList = (ListView) findViewById(R.id.left_drawer);
        /* toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -281,6 +292,26 @@ public class MyDrawerActivity extends ActionBarActivity {
 
        // toolbar.setBackgroundColor(Color.parseColor("#6B8F00"));
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+
+
+        imgNav = (ImageButton)
+                findViewById(R.id.imgNav);
+        imgNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(draweropen){
+                    drawerLayout.closeDrawers();
+                    draweropen=false;
+                }
+                else {
+
+                    draweropen=true;
+                    drawerLayout.openDrawer(relativLayout);
+                }
+            }
+        });
+
 
        /* Toolbar.LayoutParams layoutParams = new Toolbar.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -300,7 +331,7 @@ public class MyDrawerActivity extends ActionBarActivity {
         if(draweropen){
             drawerLayout.closeDrawers();
         }
-        if(searchTextopen){
+        else if(searchTextopen){
             searchTextopen=false;
             imgSrch.setVisibility(View.VISIBLE);
             mTitleTextView.setVisibility(View.VISIBLE);

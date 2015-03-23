@@ -12,6 +12,59 @@ xmlns:tools="http://schemas.android.com/tools"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/smTitle"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:gravity="left"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Similar Words :"/>
+        <View
+            android:id="@+id/line1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:background="#494949"
+            android:layout_height="1dp"/>
+        <TextView
+            android:layout_marginLeft="16dp"
+            android:id="@+id/sm1"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:textSize="20sp"
+            android:singleLine="false"
+            android:maxLines="4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="abc"/>
+
+        <TextView
+            android:layout_marginLeft="16dp"
+            android:id="@+id/sm2"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:textSize="20sp"
+            android:singleLine="false"
+            android:maxLines="4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="abc"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearExp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/expTitle"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
 
@@ -23,6 +76,7 @@ xmlns:tools="http://schemas.android.com/tools"
             android:layout_height="wrap_content"
             android:text="Example :"/>
         <View
+            android:id="@+id/line2"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
 

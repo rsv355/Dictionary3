@@ -25,16 +25,16 @@ TODO: Update blank fragment layout -->
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-        <AutoCompleteTextView
+     <!--   <AutoCompleteTextView
             android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/auto"/>
+-->
 
 
 
-
-
+<!-- category button #66C0B8-->
 
     <LinearLayout
         android:gravity="center"
@@ -52,7 +52,7 @@ TODO: Update blank fragment layout -->
         android:layout_width="80dip"
         android:layout_height="80dip"
         android:src="@drawable/icon_crime"
-        app:cb_color="#66C0B8"
+        app:cb_color="#13ba8f"
         app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg1"
@@ -74,7 +74,7 @@ TODO: Update blank fragment layout -->
                 android:layout_width="80dip"
                 android:layout_height="80dip"
                 android:src="@drawable/icon_politics"
-                app:cb_color="#66C0B8"
+                app:cb_color="#13ba8f"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg2"
@@ -95,7 +95,7 @@ TODO: Update blank fragment layout -->
                 android:layout_width="80dip"
                 android:layout_height="80dip"
                 android:src="@drawable/icon_law"
-                app:cb_color="#66C0B8"
+                app:cb_color="#13ba8f"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg3"
@@ -122,7 +122,7 @@ TODO: Update blank fragment layout -->
                 android:layout_width="80dip"
                 android:layout_height="80dip"
                 android:src="@drawable/icon_mishap"
-                app:cb_color="#66C0B8"
+                app:cb_color="#13ba8f"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg4"
@@ -143,7 +143,7 @@ TODO: Update blank fragment layout -->
                 android:layout_width="80dip"
                 android:layout_height="80dip"
                 android:src="@drawable/icon_fire"
-                app:cb_color="#66C0B8"
+                app:cb_color="#13ba8f"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg5"
@@ -164,7 +164,7 @@ TODO: Update blank fragment layout -->
                 android:layout_width="80dip"
                 android:layout_height="80dip"
                 android:src="@drawable/icon_death"
-                app:cb_color="#66C0B8"
+                app:cb_color="#13ba8f"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg6"
@@ -192,7 +192,7 @@ TODO: Update blank fragment layout -->
                 android:layout_width="80dip"
                 android:layout_height="80dip"
                 android:src="@drawable/icon_weather"
-                app:cb_color="#66C0B8"
+                app:cb_color="#13ba8f"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg7"
@@ -213,7 +213,7 @@ TODO: Update blank fragment layout -->
                 android:layout_width="80dip"
                 android:layout_height="80dip"
                 android:src="@drawable/icon_flood"
-                app:cb_color="#66C0B8"
+                app:cb_color="#13ba8f"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg8"
@@ -234,7 +234,7 @@ TODO: Update blank fragment layout -->
                 android:layout_width="80dip"
                 android:layout_height="80dip"
                 android:src="@drawable/icon_business"
-                app:cb_color="#66C0B8"
+                app:cb_color="#13ba8f"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg9"
@@ -261,7 +261,7 @@ TODO: Update blank fragment layout -->
                 android:layout_width="80dip"
                 android:layout_height="80dip"
                 android:src="@drawable/icon_sport"
-                app:cb_color="#66C0B8"
+                app:cb_color="#13ba8f"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg10"
@@ -282,7 +282,7 @@ TODO: Update blank fragment layout -->
                 android:layout_width="80dip"
                 android:layout_height="80dip"
                 android:src="@drawable/icon_other"
-                app:cb_color="#66C0B8"
+                app:cb_color="#13ba8f"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg11"
@@ -303,7 +303,7 @@ TODO: Update blank fragment layout -->
                 android:layout_width="80dip"
                 android:layout_height="80dip"
                 android:src="@drawable/icon_all"
-                app:cb_color="#66C0B8"
+                app:cb_color="#13ba8f"
                 app:cb_pressedRingWidth="8dip" />
             <TextView
                 android:id="@+id/txtcatg12"
