@@ -161,8 +161,10 @@ if(catg.size()==0){
           /*  View rowView;
             rowView = inflater.inflate(R.layout.item_list_example, null);
 */
-            TextView txt = (TextView)convertView.findViewById(R.id.txt1);
-            txt.setText(result.get(position).trim()+" - "+result2.get(position).trim());
+            TextView txt1 = (TextView)convertView.findViewById(R.id.txt1);
+            TextView txt2 = (TextView)convertView.findViewById(R.id.txt2);
+            txt1.setText(result.get(position).trim()+" - ");
+            txt2.setText(result2.get(position).trim());
 
           /*  holder.tv=(TextView) rowView.findViewById(R.id.txt1);
             holder.tv.setText(result[position]);

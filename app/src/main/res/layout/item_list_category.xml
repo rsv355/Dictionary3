@@ -19,12 +19,26 @@ xmlns:tools="http://schemas.android.com/tools"
             android:orientation="horizontal">
            <TextView
                android:textColor="#494949"
-               android:text="     "
+
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-              android:background="@drawable/background_tab"
+              android:background="@drawable/icon_audio"
                />
+            <TextView
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="abc1"
+                android:textStyle="bold"
+                android:singleLine="false"
+                android:maxLines="3"
+                android:textSize="18sp"
+                android:id="@+id/txt1"
+                android:textColor="#494949"
+                />
            <TextView
+               android:layout_marginTop="3dp"
                android:layout_marginLeft="5dp"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
@@ -32,7 +46,7 @@ xmlns:tools="http://schemas.android.com/tools"
                android:singleLine="false"
                android:maxLines="3"
                android:textSize="18sp"
-               android:id="@+id/txt1"
+               android:id="@+id/txt2"
                android:textColor="#494949"
             />
 
@@ -53,9 +67,10 @@ xmlns:tools="http://schemas.android.com/tools"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:text="More >"
-       android:textSize="12sp"
+       android:textStyle="bold"
+       android:textSize="14sp"
        android:id="@+id/txt3"
-       android:textColor="#494949"/>
+       android:textColor="#0F9572"/>
         </LinearLayout>
 
     </LinearLayout>
