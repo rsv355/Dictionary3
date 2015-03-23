@@ -30,6 +30,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -134,10 +135,13 @@ RelativeLayout relativLayout;
                 imgSrch.setVisibility(view.GONE);
                 mTitleTextView.setVisibility(view.GONE);
                 autoText.setVisibility(view.VISIBLE);
-                autoText.requestFocus();
-                autoText.setFocusable(true);
-                autoText.setFocusableInTouchMode(true);
 
+
+                autoText.setFocusableInTouchMode(true);
+                autoText.requestFocus();
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
 
 
             }
@@ -147,6 +151,9 @@ RelativeLayout relativLayout;
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(autoText.getWindowToken(), 0);
 
                     Intent i = new Intent(MyDrawerActivity.this, MeanPageActivity.class);
                     i.putExtra("word",autoText.getText().toString().trim());

@@ -43,7 +43,7 @@ public class CategoryMeanPageActivity extends ActionBarActivity {
         toolbar.setNavigationIcon(R.drawable.icon_back);
 
         toolbar.setTitle("News Vocab");
-        toolbar.setBackgroundColor(Color.parseColor("#009688"));// whats app color 009688,,00695F  --brown color 725232
+        toolbar.setBackgroundColor(Color.parseColor("#0F9572"));// whats app color 009688,,00695F  --brown color 725232
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
