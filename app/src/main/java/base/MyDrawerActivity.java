@@ -300,24 +300,38 @@ RelativeLayout relativLayout;
        // toolbar.setBackgroundColor(Color.parseColor("#6B8F00"));
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
-
         imgNav = (ImageButton)
                 findViewById(R.id.imgNav);
+        imgNav.setBackground(null);
+        imgNav.setBackgroundResource(R.drawable.icon_nav1);
+
         imgNav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+
+
+
                 if(draweropen){
+                    imgNav.setBackground(null);
+                    imgNav.setBackgroundResource(R.drawable.icon_nav1);
+
                     drawerLayout.closeDrawers();
                     draweropen=false;
                 }
                 else {
+                    imgNav.setBackground(null);
+                    imgNav.setBackgroundResource(R.drawable.icon_back1);
 
                     draweropen=true;
                     drawerLayout.openDrawer(relativLayout);
                 }
             }
         });
+
+
+
+
 
 
        /* Toolbar.LayoutParams layoutParams = new Toolbar.LayoutParams(
@@ -336,6 +350,10 @@ RelativeLayout relativLayout;
     public void onBackPressed() {
 
         if(draweropen){
+            imgNav.setBackground(null);
+            imgNav.setBackgroundResource(R.drawable.icon_nav1);
+
+
             drawerLayout.closeDrawers();
         }
         else if(searchTextopen){
