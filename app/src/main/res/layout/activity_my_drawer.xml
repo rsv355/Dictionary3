@@ -28,11 +28,11 @@
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_height="38dp"
             android:layout_centerVertical="true"
             android:layout_marginTop="6dp"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/one" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -49,7 +49,7 @@
                 android:background="@null"
                 android:text="New Vocab"
                 android:textColor="#fff"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
                 android:textSize="22sp"
                 />
@@ -73,7 +73,7 @@
                 android:id="@+id/auto"/>
 
             <ImageButton
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="14dp"
                 android:id="@+id/imageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
