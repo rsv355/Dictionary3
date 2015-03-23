@@ -5,6 +5,11 @@
     android:background="@drawable/bg"
     tools:context=".MainActivity">
     <include layout="@layout/app_bar" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/toolbar_dropshadow"
+        />
     <TextView
         android:padding="16dp"
         android:id="@+id/txt1"

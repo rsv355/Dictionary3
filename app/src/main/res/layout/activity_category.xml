@@ -8,8 +8,15 @@
     tools:context="com.example.android.newsvocabdictionary.BlankFragment">
 
     <include layout="@layout/app_bar" />
-    <LinearLayout
+    <View
         android:layout_below="@+id/toolbar"
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/toolbar_dropshadow"
+        />
+    <LinearLayout
+        android:layout_below="@+id/view"
         android:padding="16dp"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
