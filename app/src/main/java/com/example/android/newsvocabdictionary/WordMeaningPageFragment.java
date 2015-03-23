@@ -400,7 +400,7 @@ public class WordMeaningPageFragment extends Fragment implements
 
         }
         else{
-            db.insertHistoryRecord(c.getString(2),c.getString(4));  //Insert in Historydatabase
+            db.insertHistoryRecord(c.getString(2),c.getString(4),c.getString(24));  //Insert in Historydatabase
         }
 
         ex1.setText(c.getString(9));

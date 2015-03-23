@@ -28,7 +28,8 @@ public class DBAdapter {
     private static final String DATABASE_CREATE_HISTORY =
             "create table D_Word_History (_id integer primary key autoincrement, "
                     + "WORD String not null," +
-                      "MEANING text );";
+                      "MEANING text ,"+
+                      "GROUP_NAME text);";
 
 
 
@@ -36,7 +37,8 @@ public class DBAdapter {
     private static final String DATABASE_CREATE_WORD_OF_DAY =
             "create table D_Word_Of_Day (_id integer primary key autoincrement, "+
                     "WORD String not null," +
-                    "MEANING text );";
+                    "MEANING text ,"+
+                    "GROUP_NAME text);";
 
 
     private static final String DATABASE_CREATE =
@@ -189,12 +191,13 @@ public class DBAdapter {
 
 
 
-    public long insertRecord2(String WORD,String MEANING)
+    public long insertRecord2(String WORD,String MEANING,String GROUP)
     {
         ContentValues initialValues = new ContentValues();
 
         initialValues.put("WORD", WORD);//1
         initialValues.put("MEANING", MEANING);//2
+        initialValues.put("GROUP_NAME", GROUP);//3
 
         Log.e("insert in meaning ","ok");
 
@@ -285,8 +288,7 @@ public class DBAdapter {
 
     public Cursor getWordofDay( ) throws SQLException
     {
-        String selectQuery = "SELECT * FROM D_Word_ENG_HIN WHERE GROUP_NAME IN (select GROUP_NAME from Word_Of_Day WHERE GROUP_NAME NOT IN" +
-                "(Select WORD From D_Word_History)) ";
+        String selectQuery = "SELECT * FROM D_Word_ENG_HIN WHERE WORD NOT IN (select GROUP_NAME from D_Word_History) ";
         Cursor cursor = db.rawQuery(selectQuery, null);
         return cursor;
     }
@@ -309,12 +311,13 @@ public class DBAdapter {
     }
 
 
-    public long insertHistoryRecord(String WORD,String MEANING)
+    public long insertHistoryRecord(String WORD,String MEANING,String GROUP)
     {
         ContentValues initialValues = new ContentValues();
 
         initialValues.put("WORD", WORD);//1
         initialValues.put("MEANING", MEANING);//2
+        initialValues.put("GROUP_NAME", GROUP);//3
 
         Log.e("insert ","ok2");
 

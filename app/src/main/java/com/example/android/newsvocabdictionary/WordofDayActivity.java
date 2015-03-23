@@ -50,7 +50,7 @@ public class WordofDayActivity extends ActionBarActivity {
     public static CustomAdapter adapter;
     public static ArrayList<String> words;
     public static ArrayList<String> meang;
-
+    public static ArrayList<String> groupname;
 
     public static ArrayList<String> FinalWords ;
 
@@ -101,6 +101,7 @@ public class WordofDayActivity extends ActionBarActivity {
 
             words.add(c.getString(c.getColumnIndex("WORD")));
             meang.add(c.getString(c.getColumnIndex("MEANING_HIN")));
+            groupname.add(c.getString(c.getColumnIndex("GROUP_NAME")));
             c.moveToNext();
         }
     }
@@ -118,7 +119,7 @@ public class WordofDayActivity extends ActionBarActivity {
         db.open();
         db.deleteRecord2();
         for (int i = 0; i < words.size(); i++) {
-            db.insertRecord2(words.get(i).trim(),meang.get(i).trim());
+            db.insertRecord2(words.get(i).trim(),meang.get(i).trim(),groupname.get(i).trim());
             //   db.insertContact("dd",3);
         }
         db.close();
@@ -128,6 +129,7 @@ public class WordofDayActivity extends ActionBarActivity {
     private void Display2(Cursor c1) {
         meang = new ArrayList<String>();
         words = new ArrayList<String>();
+        groupname= new ArrayList<String>();
 
 //   !c1.isAfterLast()||
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -140,6 +142,7 @@ public class WordofDayActivity extends ActionBarActivity {
 
             words.add(c1.getString(c1.getColumnIndex("WORD")));
             meang.add(c1.getString(c1.getColumnIndex("MEANING")));
+            groupname.add(c1.getString(c1.getColumnIndex("GROUP_NAME")));
             c1.moveToNext();
         }
 
@@ -187,7 +190,7 @@ public class WordofDayActivity extends ActionBarActivity {
             // if word of day is open first time day
             if(FirstTime.equalsIgnoreCase("yes"))
             {
-                //    Toast.makeText(WordofDayActivity.this,"First time",Toast.LENGTH_SHORT).show();
+                  Toast.makeText(WordofDayActivity.this,"First time",Toast.LENGTH_SHORT).show();
 
 
                 db.open();
@@ -198,12 +201,13 @@ public class WordofDayActivity extends ActionBarActivity {
                 }
                 c.close();
                 db.close();
+
                 insertdataintoDATABASE();
             }
             else {
                 // if word of day is open next day
                 if (todayDate.after(savedDate)) {
-                    //     Toast.makeText(WordofDayActivity.this,"new date",Toast.LENGTH_SHORT).show();
+                       Toast.makeText(WordofDayActivity.this,"new date",Toast.LENGTH_SHORT).show();
 
 
                     db.open();
@@ -228,7 +232,7 @@ public class WordofDayActivity extends ActionBarActivity {
 
                 // if word of day is open same day
                 else{
-                    //  Toast.makeText(WordofDayActivity.this,"old date",Toast.LENGTH_SHORT).show();
+                     Toast.makeText(WordofDayActivity.this,"old date",Toast.LENGTH_SHORT).show();
 
 
                     db.open();
@@ -268,7 +272,7 @@ public class WordofDayActivity extends ActionBarActivity {
 
         meang = new ArrayList<String>();
         words = new ArrayList<String>();
-
+        groupname= new ArrayList<String>();
 
         loaddata();
 

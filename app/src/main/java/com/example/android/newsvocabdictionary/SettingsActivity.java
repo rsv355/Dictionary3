@@ -50,6 +50,7 @@ TextView txttime;
 
     public static ArrayList<String> words;
     public static ArrayList<String> meang;
+    public static ArrayList<String> groupname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -302,7 +303,7 @@ void setWordlimitSpinner(){
 
   words = new ArrayList<String>();
   meang = new ArrayList<String>();
-
+    groupname= new ArrayList<String>();
 
     db.open();
     Prefs.putString("FirstTime","no");
@@ -327,6 +328,7 @@ void setWordlimitSpinner(){
         while (c.getPosition()<wordlimit) {
             words.add(c.getString(c.getColumnIndex("WORD")));
             meang.add(c.getString(c.getColumnIndex("MEANING_HIN")));
+            groupname.add(c.getString(c.getColumnIndex("GROUP_NAME")));
             c.moveToNext();
         }
     }
@@ -336,7 +338,7 @@ void setWordlimitSpinner(){
         db.open();
         db.deleteRecord2();
         for (int i = 0; i < words.size(); i++) {
-            db.insertRecord2(words.get(i).trim(),meang.get(i).trim());
+            db.insertRecord2(words.get(i).trim(),meang.get(i).trim(),groupname.get(i).trim());
             //   db.insertContact("dd",3);
         }
         db.close();
