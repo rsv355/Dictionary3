@@ -170,6 +170,9 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         paddingRight = a.getDimensionPixelSize(PADDING_RIGHT_INDEX, paddingRight);
         a.recycle();
 
+
+
+
         //In case we have the padding they must be equal so we take the biggest
         if (paddingRight < paddingLeft) {
             paddingRight = paddingLeft;
@@ -178,7 +181,6 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         if (paddingLeft < paddingRight) {
             paddingLeft = paddingRight;
         }
-
         // get custom attrs
         a = context.obtainStyledAttributes(attrs, R.styleable.PagerSlidingTabStrip);
         indicatorColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsIndicatorColor, indicatorColor);
