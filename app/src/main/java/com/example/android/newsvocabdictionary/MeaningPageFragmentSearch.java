@@ -46,7 +46,7 @@ public class MeaningPageFragmentSearch extends Fragment implements
     public static ArrayList<String> exp2;
     public static ArrayList<String> match;
     public static ArrayList<String> mean;
-    LinearLayout empty,mainlinear,linearExp;
+    LinearLayout empty,mainlinear,linearExp,linearsmp;
     public static ListView meanListView;
     int i,j,k,a;
 
@@ -106,6 +106,7 @@ public class MeaningPageFragmentSearch extends Fragment implements
         line2= (View)footer.findViewById(R.id.line2);
         smTitle= (TextView)footer.findViewById(R.id.smTitle);
         linearExp = (LinearLayout)footer.findViewById(R.id.linearExp);
+        linearsmp = (LinearLayout)footer.findViewById(R.id.linearsmp);
 
         sm1 = (TextView)footer.findViewById(R.id.sm1);
         sm2 = (TextView)footer.findViewById(R.id.sm2);
@@ -138,7 +139,7 @@ public class MeaningPageFragmentSearch extends Fragment implements
 
         meanListView = (ListView)convertview.findViewById(R.id.meanListView);
 
-        dash = (TextView)convertview.findViewById(R.id.dash);
+      //  dash = (TextView)convertview.findViewById(R.id.dash);
         prnoun1= (TextView)convertview.findViewById(R.id.prnoun1);
         //  mean1= (TextView)convertview.findViewById(R.id.mean1);
 
@@ -177,6 +178,7 @@ public class MeaningPageFragmentSearch extends Fragment implements
 
     private void Display(Cursor c) {
 
+
         prnoun1.setText(c.getString(3));
         //  mean1.setText(c.getString(4));
        // for history word
@@ -187,6 +189,29 @@ public class MeaningPageFragmentSearch extends Fragment implements
         else{
             db.insertHistoryRecord(c.getString(2),c.getString(4));  //Insert in Historydatabase
         }
+
+
+
+        if(c.getString(14)==null&&c.getString(15)==null){
+            linearsmp.setVisibility(View.GONE);
+
+        }
+        else if(c.getString(14)==null){
+            sm1.setVisibility(View.GONE);
+            sm2.setText(c.getString(15).trim());
+            sm2.setVisibility(View.VISIBLE);
+        }
+        else if(c.getString(15)==null){
+            sm2.setVisibility(View.GONE);
+            sm1.setText(c.getString(14).trim());
+            sm1.setVisibility(View.VISIBLE);
+        }
+        else{
+            linearsmp.setVisibility(View.VISIBLE);
+            sm1.setText(c.getString(14).trim());
+            sm2.setText(c.getString(15).trim());
+        }
+
 
 
 
@@ -234,40 +259,7 @@ public class MeaningPageFragmentSearch extends Fragment implements
 
         CustomAdapter adapter = new CustomAdapter(getActivity(), mean);
         meanListView.setAdapter(adapter);
-     /*   exp.add(0,c.getString(9));
-        exp.add(1,c.getString(10));
-        exp.add(2,c.getString(11));
-        exp.add(3,c.getString(12));
-        exp.add(4,c.getString(13));*/
 
-      /* if(c.getString(12)==null){
-           Toast.makeText(getActivity(),"value null",Toast.LENGTH_SHORT).show();
-       }
-*/
-
-
-       /* for(int i=0;i<5;i++){
-            if(exp.get(i).equals(null)){
-                exp.remove(i);
-            }
-        }
-*/
-
-      /*  match.add(0,c.getString(14));
-        match.add(1,c.getString(15));
-        match.add(2,c.getString(16));
-        match.add(3,c.getString(17));
-        match.add(4,c.getString(18));*/
-
-      /*  CustomAdpter adapter = new CustomAdpter(getActivity(), prgmNameList);
-        ExamplePageFragment.list.setAdapter(adapter);
-*/
-       /* Toast.makeText(getActivity(),"id: " + c.getString(0) +
-                        "\n" +"CATGID: " + c.getString(1) + "\n"
-                        +"WORD: " + c.getString(2) + "\n" +
-                        "MEANING: " + c.getString(3),
-                Toast.LENGTH_LONG).show();
-*/
 
     }
 

@@ -8,6 +8,7 @@ xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.android.newsvocabdictionary.ExamplePageFragment">
 
     <LinearLayout
+        android:id="@+id/linearsmp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">

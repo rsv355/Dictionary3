@@ -399,7 +399,13 @@ RelativeLayout relativLayout;
                         startActivity(i23);
                         break;
                     case 5:
+                        String text="Hi,\nPlease Check out this amazing app, \n https://play.google.com/store/apps/details?id=com.newsvocab.dictionary";
 
+                        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                        sharingIntent.setType("text/plain");
+                        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+                        // sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
+                        startActivity(Intent.createChooser(sharingIntent, "Share using"));
                         //share page
                         break;
                     case 6:

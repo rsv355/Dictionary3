@@ -43,7 +43,7 @@ public class MeaningPageFragment extends Fragment implements
 
     List<ParseObject> objects;
     ParseObject gameScore;
-    TextView txt,prnoun1,mean1,ex1,ex11;
+    TextView txt,prnoun1,mean1,ex1,ex11,dash,sm1,sm2,expTitle,smTitle;
     private TextToSpeech tts;
      DBAdapter db;
     ImageView imgaudio;
@@ -52,13 +52,14 @@ public class MeaningPageFragment extends Fragment implements
     public static ArrayList<String> exp2;
     public static ArrayList<String> match;
     public static ArrayList<String> mean;
-    LinearLayout empty,mainlinear;
+    LinearLayout empty,mainlinear,linearExp,linearsmp;
     public static ListView meanListView;
     int i,j,k,a;
     TextView prev,next;
     int Pos;
     boolean firstTime=true;
     boolean istextChanege=false;
+    View line1,line2;
 
     /**
      * Use this factory method to create a new instance of
@@ -135,6 +136,16 @@ public class MeaningPageFragment extends Fragment implements
 
         ViewGroup header = (ViewGroup) inflaterHeader.inflate(
                 R.layout.list_header, meanListView, false);
+        expTitle= (TextView)footer.findViewById(R.id.expTitle);
+        line1= (View)footer.findViewById(R.id.line1);
+        line2= (View)footer.findViewById(R.id.line2);
+        smTitle= (TextView)footer.findViewById(R.id.smTitle);
+        linearExp = (LinearLayout)footer.findViewById(R.id.linearExp);
+        linearsmp = (LinearLayout)footer.findViewById(R.id.linearsmp);
+
+        sm1 = (TextView)footer.findViewById(R.id.sm1);
+        sm2 = (TextView)footer.findViewById(R.id.sm2);
+
 
         ex1 = (TextView)footer.findViewById(R.id.ex1);
         ex11 = (TextView)footer.findViewById(R.id.ex11);
@@ -413,6 +424,41 @@ public class MeaningPageFragment extends Fragment implements
         exp2 = new ArrayList<String>();
         match = new ArrayList<String>();
         mean = new ArrayList<String>();
+
+        if(c.getString(14)==null&&c.getString(15)==null){
+            linearsmp.setVisibility(View.GONE);
+
+        }
+        else if(c.getString(14)==null){
+            sm1.setVisibility(View.GONE);
+            sm2.setText(c.getString(15).trim());
+            sm2.setVisibility(View.VISIBLE);
+        }
+        else if(c.getString(15)==null){
+            sm2.setVisibility(View.GONE);
+            sm1.setText(c.getString(14).trim());
+            sm1.setVisibility(View.VISIBLE);
+        }
+        else{
+            linearsmp.setVisibility(View.VISIBLE);
+            sm1.setText(c.getString(14).trim());
+            sm2.setText(c.getString(15).trim());
+        }
+
+
+
+
+        if(c.getString(9).equalsIgnoreCase("")){
+            linearExp.setVisibility(View.GONE);
+        }
+        else{
+            linearExp.setVisibility(View.VISIBLE);
+            ex1.setText(c.getString(9));
+            ex11.setText("\'"+c.getString(19)+"\'");
+
+        }
+
+
 
         i=0;
         k=0;
