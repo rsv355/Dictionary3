@@ -15,8 +15,7 @@
             android:id="@+id/tabs_mobiletopup"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#0F9572"
-            app:pstsPaddingMiddle="true"/>
+            android:background="#0F9572"/>
 
         <View
             android:layout_width="match_parent"
