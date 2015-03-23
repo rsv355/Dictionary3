@@ -58,6 +58,9 @@ public class CategoryMeanPageActivity extends ActionBarActivity {
 
         adapter = new MyPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);
+
+
+
         tabs.setViewPager(pager);
 
         tabs.setDividerColor(Color.parseColor("#ffffff"));

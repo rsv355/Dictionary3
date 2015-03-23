@@ -58,6 +58,7 @@ TODO: Update blank fragment layout -->
      <TextView
          android:layout_marginLeft="10dp"
          android:id="@+id/txt"
+         android:textStyle="bold"
          android:textSize="20sp"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
