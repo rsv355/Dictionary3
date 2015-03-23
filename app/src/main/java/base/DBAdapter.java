@@ -278,7 +278,6 @@ public class DBAdapter {
     }
 
 
-
     public Cursor getHistoryWord(String WORD) throws SQLException
     {
         String selectQuery = "SELECT * FROM D_Word_History WHERE WORD ="+"\""+WORD.toString().trim()+"\"";
