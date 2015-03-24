@@ -24,10 +24,18 @@
             android:layout_centerVertical="true"
             android:background="@null"
              />
-
+        <ImageButton
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/imgbacksearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back"
+            />
         <ImageView
             android:id="@+id/imageView1"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"

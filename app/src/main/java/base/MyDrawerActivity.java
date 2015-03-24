@@ -79,7 +79,7 @@ public class MyDrawerActivity extends ActionBarActivity {
     TextView mTitleTextView;
     AutoCompleteTextView autoText;
     ImageButton imgNav;
-    ImageButton imgSrch;
+    ImageButton imgSrch,imgbacksearch;
     ImageView imageView1;
     boolean isdrawerOpen=false;
 
@@ -140,12 +140,35 @@ public class MyDrawerActivity extends ActionBarActivity {
         imageView1= (ImageView)
                 findViewById(R.id.imageView1);
 
-         imgSrch = (ImageButton)
+        imgbacksearch= (ImageButton)
+                findViewById(R.id.imgbacksearch);
+
+        imgSrch = (ImageButton)
                 findViewById(R.id.imageButton);
+
+
+        imgbacksearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgbacksearch.setVisibility(View.GONE);
+                imgNav.setVisibility(View.VISIBLE);
+
+                searchTextopen=false;
+                imgSrch.setVisibility(View.VISIBLE);
+                mTitleTextView.setVisibility(View.VISIBLE);
+                autoText.setVisibility(View.GONE);
+
+            }
+        });
+
         imgSrch.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
+
+                imgbacksearch.setVisibility(View.VISIBLE);
+                imgNav.setVisibility(View.GONE);
+
                 searchTextopen=true;
                 imgSrch.setVisibility(view.GONE);
                 mTitleTextView.setVisibility(view.GONE);
@@ -165,9 +188,20 @@ public class MyDrawerActivity extends ActionBarActivity {
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 isdrawerOpen=true;
-                processChangeImage(isdrawerOpen);
-                drawerLayout.openDrawer(relativLayout);
+              //  drawerLayout.openDrawer(relativLayout);
+
+                if(drawerLayout.isDrawerOpen(relativLayout)){
+                    drawerLayout.closeDrawers();
+                    imgNav.setBackground(null);
+                    imgNav.setBackgroundResource(R.drawable.nav);
+                }
+                else{
+                    drawerLayout.openDrawer(relativLayout);
+                    imgNav.setBackground(null);
+                    imgNav.setBackgroundResource(R.drawable.back);
+                }
             }
         });
 
@@ -254,11 +288,11 @@ public class MyDrawerActivity extends ActionBarActivity {
     void processChangeImage(boolean tempisdrawerOpen){
         if(drawerLayout.isDrawerOpen(relativLayout)){
             imgNav.setBackground(null);
-            imgNav.setBackgroundResource(R.drawable.back);
+            imgNav.setBackgroundResource(R.drawable.nav);
         }
         else{
             imgNav.setBackground(null);
-            imgNav.setBackgroundResource(R.drawable.nav);
+            imgNav.setBackgroundResource(R.drawable.back);
         }
     }
 
@@ -333,6 +367,14 @@ public class MyDrawerActivity extends ActionBarActivity {
             drawerLayout.closeDrawers();
         }
         else if(searchTextopen){
+
+
+            imgbacksearch.setVisibility(View.GONE);
+            imgNav.setVisibility(View.VISIBLE);
+            imgNav.setBackground(null);
+            imgNav.setBackgroundResource(R.drawable.nav);
+
+
             searchTextopen=false;
             imgSrch.setVisibility(View.VISIBLE);
             mTitleTextView.setVisibility(View.VISIBLE);
