@@ -68,8 +68,9 @@ public class MyDrawerActivity extends ActionBarActivity {
     private ActionBarDrawerToggle drawerToggle;
     private ListView leftDrawerList;
     private ArrayAdapter<String> navigationDrawerAdapter;
-    private String[] leftSliderData = {"Home","Words of the Day","Words Per Day","History", "Contact Us", "Share App", "Settings"};
-RelativeLayout relativLayout;
+    private String[] leftSliderData = {"Home","Words of the Day","Words Per Day - ","History", "Contact Us", "Share App", "Settings"};
+    private String[] leftSliderData2 = {"","","3","", "", "", ""};
+    RelativeLayout relativLayout;
     private boolean draweropen=false;
     private boolean searchTextopen=false;
     DBAdapter db;
@@ -376,7 +377,8 @@ RelativeLayout relativLayout;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         int pos = preferences.getInt("wordlimit", 2);
         pos+=1;
-        leftSliderData[2]="Words Per Day - "+pos;
+
+        leftSliderData2[2]=""+pos;
 
 
         navigationDrawerAdapter = new ArrayAdapter<String>(MyDrawerActivity.this, android.R.layout.simple_list_item_activated_1, android.R.id.text1, leftSliderData);
@@ -466,10 +468,14 @@ RelativeLayout relativLayout;
             View row;
             row = inflater.inflate(R.layout.mydrawer_listview_layout, parent, false);
             TextView title = (TextView) row.findViewById(R.id.txtTitle);
+            TextView title2 = (TextView) row.findViewById(R.id.txtTitle2);
             ImageView img_icon = (ImageView) row.findViewById(R.id.imgIcon);
             img_icon.setBackgroundResource(imagelist[position]);
             img_icon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             title.setText(leftSliderData[position]);
+
+            title2.setText(leftSliderData2[position]);
+            title2.setTextSize(20);
             title.setTextSize(20);
             return row;
         }
