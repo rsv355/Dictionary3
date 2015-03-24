@@ -170,17 +170,6 @@ public class WordofDayActivity extends ActionBarActivity {
             Date todayDate = df.parse(todayDateString);
 
 
-           /* Calendar calsavedDate = Calendar.getInstance();
-            Calendar caltodayDate = Calendar.getInstance();
-
-            calsavedDate.setTime(savedDate);
-            caltodayDate.setTime(todayDate);
-
-            SimpleDateFormat sdf1 = new SimpleDateFormat("dd");
-            String ansSaved = sdf1.format(calsavedDate.getTime());
-            String ansToday = sdf1.format(caltodayDate.getTime());*/
-
-
 
 
             String FirstTime = Prefs.getString("FirstTime","yes");
@@ -281,7 +270,7 @@ public class WordofDayActivity extends ActionBarActivity {
 
 
 
-        adapter = new CustomAdapter(WordofDayActivity.this, words,meang);
+        adapter = new CustomAdapter(WordofDayActivity.this, groupname,meang);
         adapter.notifyDataSetChanged();
         list.setAdapter(adapter);
 
