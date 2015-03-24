@@ -174,8 +174,8 @@ public class WordMeaningPageFragment extends Fragment implements
             }
         });
 
-      for (int i = 0; i < WordofDayActivity.words.size(); i++) {
-            if (WordofDayActivity.words.get(i).equalsIgnoreCase(txt.getText().toString())) {
+      for (int i = 0; i < WordofDayActivity.groupname.size(); i++) {
+            if (WordofDayActivity.groupname.get(i).equalsIgnoreCase(txt.getText().toString())) {
                 Pos = i;
                 //  Toast.makeText(getActivity(), "Pos first time = " + Pos, Toast.LENGTH_SHORT).show();
                 firstTime = true;
@@ -201,16 +201,16 @@ public class WordMeaningPageFragment extends Fragment implements
                     else {
                         istextChanege=true;
                         Prefs.putBoolean("istextchange1", true);
-                        texttoSpeech = WordofDayActivity.words.get(Pos).toString();
+                        texttoSpeech = WordofDayActivity.groupname.get(Pos).toString();
                         txt.setText(texttoSpeech);
                         animation();
-                        Prefs.putString("value",WordofDayActivity.words.get(Pos).toString());
+                        Prefs.putString("value",WordofDayActivity.groupname.get(Pos).toString());
                         //   Toast.makeText(getActivity(), "Pos 1= " + Pos, Toast.LENGTH_SHORT).show();
-                        processfetchdetails(WordofDayActivity.words.get(Pos).toString());
+                        processfetchdetails(WordofDayActivity.groupname.get(Pos).toString());
 
                         Intent i = new Intent(getActivity(), WordofDayMeanPageActivity.class);
                         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        i.putExtra("word", WordofDayActivity.words.get(Pos).toString());
+                        i.putExtra("word", WordofDayActivity.groupname.get(Pos).toString());
                         startActivity(i);
                         getActivity().finish();
 
@@ -221,21 +221,21 @@ public class WordMeaningPageFragment extends Fragment implements
                     //   Toast.makeText(getActivity(), "Pos 1= " + Pos, Toast.LENGTH_SHORT).show();
                     Toast.makeText(getActivity(),"No More Words",Toast.LENGTH_SHORT).show();
                 }
-                else if(Pos>=WordofDayActivity.words.size()){
+                else if(Pos>=WordofDayActivity.groupname.size()){
                     Pos-=1;
                     istextChanege=true;
                     Prefs.putBoolean("istextchange1",true);
                     // Toast.makeText(getActivity(), "" + WordofDayActivity.words.get(Pos), Toast.LENGTH_SHORT).show();
-                    texttoSpeech=WordofDayActivity.words.get(Pos).toString();
+                    texttoSpeech=WordofDayActivity.groupname.get(Pos).toString();
                     txt.setText(texttoSpeech);
                     animation();
-                    Prefs.putString("value",WordofDayActivity.words.get(Pos).toString());
+                    Prefs.putString("value",WordofDayActivity.groupname.get(Pos).toString());
                     //    Toast.makeText(getActivity(), "Pos 2 = " + Pos, Toast.LENGTH_SHORT).show();
-                    processfetchdetails(WordofDayActivity.words.get(Pos).toString());
+                    processfetchdetails(WordofDayActivity.groupname.get(Pos).toString());
 
                     Intent i = new Intent(getActivity(), WordofDayMeanPageActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    i.putExtra("word", WordofDayActivity.words.get(Pos).toString());
+                    i.putExtra("word", WordofDayActivity.groupname.get(Pos).toString());
                     startActivity(i);
                     getActivity().finish();
 
@@ -245,16 +245,16 @@ public class WordMeaningPageFragment extends Fragment implements
                     istextChanege=true;
                     Prefs.putBoolean("istextchange1",true);
                     //Toast.makeText(getActivity(), "" + WordofDayActivity.words.get(Pos), Toast.LENGTH_SHORT).show();
-                    texttoSpeech=WordofDayActivity.words.get(Pos).toString();
+                    texttoSpeech=WordofDayActivity.groupname.get(Pos).toString();
                     txt.setText(texttoSpeech);
                     animation();
-                    Prefs.putString("value",WordofDayActivity.words.get(Pos).toString());
+                    Prefs.putString("value",WordofDayActivity.groupname.get(Pos).toString());
                     //   Toast.makeText(getActivity(), "Pos 3= " + Pos, Toast.LENGTH_SHORT).show();
-                    processfetchdetails(WordofDayActivity.words.get(Pos).toString());
+                    processfetchdetails(WordofDayActivity.groupname.get(Pos).toString());
 
                     Intent i = new Intent(getActivity(), WordofDayMeanPageActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    i.putExtra("word", WordofDayActivity.words.get(Pos).toString());
+                    i.putExtra("word", WordofDayActivity.groupname.get(Pos).toString());
                     startActivity(i);
                     getActivity().finish();
 
@@ -273,29 +273,29 @@ public class WordMeaningPageFragment extends Fragment implements
                     firstTime=false;
 
                     Pos+=1;
-                    if(Pos>=WordofDayActivity.words.size()){
+                    if(Pos>=WordofDayActivity.groupname.size()){
                         //    Toast.makeText(getActivity(), "Pos 1= " + Pos, Toast.LENGTH_SHORT).show();
                         Toast.makeText(getActivity(),"No More Words",Toast.LENGTH_SHORT).show();
                     }
                     else {
                         istextChanege=true;
                         Prefs.putBoolean("istextchange1", true);
-                        texttoSpeech = WordofDayActivity.words.get(Pos).toString();
+                        texttoSpeech = WordofDayActivity.groupname.get(Pos).toString();
                         txt.setText(texttoSpeech);
                         animation();
-                        Prefs.putString("value",WordofDayActivity.words.get(Pos).toString());
+                        Prefs.putString("value",WordofDayActivity.groupname.get(Pos).toString());
                         //  Toast.makeText(getActivity(), "Pos 11= " + Pos, Toast.LENGTH_SHORT).show();
-                        processfetchdetails(WordofDayActivity.words.get(Pos).toString());
+                        processfetchdetails(WordofDayActivity.groupname.get(Pos).toString());
 
                         Intent i = new Intent(getActivity(), WordofDayMeanPageActivity.class);
                         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        i.putExtra("word", WordofDayActivity.words.get(Pos).toString());
+                        i.putExtra("word", WordofDayActivity.groupname.get(Pos).toString());
                         startActivity(i);
                         getActivity().finish();
                     }
 
                 }
-                else if(Pos+1>=WordofDayActivity.words.size()){
+                else if(Pos+1>=WordofDayActivity.groupname.size()){
                     //  Toast.makeText(getActivity(), "Pos 1= " + Pos, Toast.LENGTH_SHORT).show();
                     Toast.makeText(getActivity(),"No More Words",Toast.LENGTH_SHORT).show();
                 }
@@ -304,16 +304,16 @@ public class WordMeaningPageFragment extends Fragment implements
                     istextChanege=true;
                     Prefs.putBoolean("istextchange1",true);
                     //  Toast.makeText(getActivity(), "" + WordofDayActivity.words.get(Pos), Toast.LENGTH_SHORT).show();
-                    texttoSpeech=WordofDayActivity.words.get(Pos).toString();
+                    texttoSpeech=WordofDayActivity.groupname.get(Pos).toString();
                     txt.setText(texttoSpeech);
                     animation();
-                    Prefs.putString("value",WordofDayActivity.words.get(Pos).toString());
+                    Prefs.putString("value",WordofDayActivity.groupname.get(Pos).toString());
                     //   Toast.makeText(getActivity(), "Pos 22= " + Pos, Toast.LENGTH_SHORT).show();
-                    processfetchdetails(WordofDayActivity.words.get(Pos).toString());
+                    processfetchdetails(WordofDayActivity.groupname.get(Pos).toString());
 
                     Intent i = new Intent(getActivity(), WordofDayMeanPageActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    i.putExtra("word", WordofDayActivity.words.get(Pos).toString());
+                    i.putExtra("word", WordofDayActivity.groupname.get(Pos).toString());
                     startActivity(i);
                     getActivity().finish();
                 }
@@ -322,17 +322,17 @@ public class WordMeaningPageFragment extends Fragment implements
                     istextChanege=true;
                     Prefs.putBoolean("istextchange1",true);
                     // Toast.makeText(getActivity(), "" + WordofDayActivity.words.get(Pos), Toast.LENGTH_SHORT).show();
-                    texttoSpeech=WordofDayActivity.words.get(Pos).toString();
+                    texttoSpeech=WordofDayActivity.groupname.get(Pos).toString();
                     txt.setText(texttoSpeech);
                     animation();
-                    Prefs.putString("value",WordofDayActivity.words.get(Pos).toString());
+                    Prefs.putString("value",WordofDayActivity.groupname.get(Pos).toString());
                     //   Toast.makeText(getActivity(), "Pos 33= " + Pos, Toast.LENGTH_SHORT).show();
-                    processfetchdetails(WordofDayActivity.words.get(Pos).toString());
+                    processfetchdetails(WordofDayActivity.groupname.get(Pos).toString());
 
 
                     Intent i = new Intent(getActivity(), WordofDayMeanPageActivity.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    i.putExtra("word", WordofDayActivity.words.get(Pos).toString());
+                    i.putExtra("word", WordofDayActivity.groupname.get(Pos).toString());
                     startActivity(i);
                     getActivity().finish();
 

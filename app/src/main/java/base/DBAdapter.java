@@ -189,8 +189,6 @@ public class DBAdapter {
     }
 
 
-
-
     public long insertRecord2(String WORD,String MEANING,String GROUP)
     {
         ContentValues initialValues = new ContentValues();
