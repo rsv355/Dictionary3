@@ -1,6 +1,7 @@
 package com.example.android.newsvocabdictionary;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -176,7 +177,7 @@ public class MeaningPageFragmentSearch extends Fragment implements
         db.close();
     }
 
-    private void Display(Cursor c) {
+    private void Display(final Cursor c) {
 
 
         prnoun1.setText(c.getString(3));
@@ -213,6 +214,28 @@ public class MeaningPageFragmentSearch extends Fragment implements
         }
 
 
+
+        sm1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), CategoryMeanPageActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                i.putExtra("word",sm1.getText().toString().trim());
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
+
+        sm2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), CategoryMeanPageActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                i.putExtra("word",sm2.getText().toString().trim());
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
 
 
         if(c.getString(9)==null){
