@@ -215,7 +215,7 @@ public class MeaningPageFragmentSearch extends Fragment implements
 
 
 
-        if(c.getString(9).equalsIgnoreCase("")){
+        if(c.getString(9)==null){
             linearExp.setVisibility(View.GONE);
              }
         else{
