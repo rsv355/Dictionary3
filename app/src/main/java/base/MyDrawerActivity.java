@@ -80,6 +80,8 @@ public class MyDrawerActivity extends ActionBarActivity {
     AutoCompleteTextView autoText;
     ImageButton imgNav;
     ImageButton imgSrch;
+    ImageView imageView1;
+    boolean isdrawerOpen=false;
 
 
 
@@ -126,6 +128,17 @@ public class MyDrawerActivity extends ActionBarActivity {
         autoText.setAdapter(adapter11);
 
 
+        autoText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(MyDrawerActivity.this, MeanPageActivity.class);
+                i.putExtra("word", temp.get(position).trim());
+                startActivity(i);
+            }
+        });
+
+        imageView1= (ImageView)
+                findViewById(R.id.imageView1);
 
          imgSrch = (ImageButton)
                 findViewById(R.id.imageButton);
@@ -148,6 +161,16 @@ public class MyDrawerActivity extends ActionBarActivity {
 
             }
         });
+
+        imageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isdrawerOpen=true;
+                processChangeImage(isdrawerOpen);
+                drawerLayout.openDrawer(relativLayout);
+            }
+        });
+
 
         autoText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -228,91 +251,18 @@ public class MyDrawerActivity extends ActionBarActivity {
     }
 
 
-/*
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-
-        SearchManager searchManager = (SearchManager) getSystemService(MyDrawerActivity.this.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        /*/
-/*** setOnQueryTextFocusChangeListener ***
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-
-
-        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
-
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-
-
-
-            }
-        });
-
-
-
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-
-                SearchRecentSuggestions suggestions = new SearchRecentSuggestions(MyDrawerActivity.this,SampleRecentSuggestionsProvider.AUTHORITY,SampleRecentSuggestionsProvider.MODE);
-                suggestions.saveRecentQuery(query, null);
-
-
-                Intent i = new Intent(MyDrawerActivity.this, MeanPageActivity.class);
-                i.putExtra("word",query);
-                startActivity(i);
-
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String searchQuery) {
-
-
-                return true;
-            }
-        });
-
-        MenuItemCompat.setOnActionExpandListener(searchItem, new MenuItemCompat.OnActionExpandListener() {
-            @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
-                // Do something when collapsed
-                return true;  // Return true to collapse action view
-            }
-
-            @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
-                // Do something when expanded
-                return true;  // Return true to expand action view
-            }
-        });
-        return true;
+    void processChangeImage(boolean tempisdrawerOpen){
+        if(drawerLayout.isDrawerOpen(relativLayout)){
+            imgNav.setBackground(null);
+            imgNav.setBackgroundResource(R.drawable.back);
+        }
+        else{
+            imgNav.setBackground(null);
+            imgNav.setBackgroundResource(R.drawable.nav);
+        }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_search) {
-//           Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-           if (drawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
-*/
 
     private void nitView() {
         relativLayout = (RelativeLayout)findViewById(R.id.relativLayout);
@@ -329,7 +279,7 @@ public class MyDrawerActivity extends ActionBarActivity {
         imgNav = (ImageButton)
                 findViewById(R.id.imgNav);
         imgNav.setBackground(null);
-        imgNav.setBackgroundResource(R.drawable.icon_nav1);
+        imgNav.setBackgroundResource(R.drawable.nav);
 
         imgNav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -340,14 +290,14 @@ public class MyDrawerActivity extends ActionBarActivity {
 
                 if(draweropen){
                     imgNav.setBackground(null);
-                    imgNav.setBackgroundResource(R.drawable.icon_nav1);
+                    imgNav.setBackgroundResource(R.drawable.nav);
 
                     drawerLayout.closeDrawers();
                     draweropen=false;
                 }
                 else {
                     imgNav.setBackground(null);
-                    imgNav.setBackgroundResource(R.drawable.icon_back1);
+                    imgNav.setBackgroundResource(R.drawable.back);
 
                     draweropen=true;
                     drawerLayout.openDrawer(relativLayout);
@@ -377,7 +327,7 @@ public class MyDrawerActivity extends ActionBarActivity {
 
         if(draweropen){
             imgNav.setBackground(null);
-            imgNav.setBackgroundResource(R.drawable.icon_nav1);
+            imgNav.setBackgroundResource(R.drawable.nav);
 
 
             drawerLayout.closeDrawers();
@@ -420,7 +370,8 @@ public class MyDrawerActivity extends ActionBarActivity {
                 switch (position) {
 
                     case 0:
-
+                        imgNav.setBackground(null);
+                        imgNav.setBackgroundResource(R.drawable.nav);
 
                         FragmentManager manager = getSupportFragmentManager();
                         FragmentTransaction ft = manager.beginTransaction();
@@ -429,28 +380,34 @@ public class MyDrawerActivity extends ActionBarActivity {
                         ft.commit();
                         break;
                     case 1:
-
+                        imgNav.setBackground(null);
+                        imgNav.setBackgroundResource(R.drawable.nav);
                         Intent i3 = new Intent(MyDrawerActivity.this, WordofDayActivity.class);
                         startActivity(i3);
                         break;
                     case 2:
-
+                        imgNav.setBackground(null);
+                        imgNav.setBackgroundResource(R.drawable.nav);
                         Intent i33 = new Intent(MyDrawerActivity.this, SettingsActivity.class);
                         startActivity(i33);
 
                         break;
                     case 3:
-
+                        imgNav.setBackground(null);
+                        imgNav.setBackgroundResource(R.drawable.nav);
                         Intent i43 = new Intent(MyDrawerActivity.this, HistoryActivity.class);
                         startActivity(i43);
                         break;
 
                     case 4:
-
+                        imgNav.setBackground(null);
+                        imgNav.setBackgroundResource(R.drawable.nav);
                         Intent i23 = new Intent(MyDrawerActivity.this, ContactUsActivity.class);
                         startActivity(i23);
                         break;
                     case 5:
+                        imgNav.setBackground(null);
+                        imgNav.setBackgroundResource(R.drawable.nav);
                         String text="Hi,\nPlease Check out this amazing app, \n https://play.google.com/store/apps/details?id=com.newsvocab.dictionary";
 
                         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
@@ -461,7 +418,8 @@ public class MyDrawerActivity extends ActionBarActivity {
                         //share page
                         break;
                     case 6:
-
+                        imgNav.setBackground(null);
+                        imgNav.setBackgroundResource(R.drawable.nav);
                         Intent i4 = new Intent(MyDrawerActivity.this, SettingsActivity.class);
                         startActivity(i4);
                         break;
