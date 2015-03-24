@@ -41,7 +41,7 @@ public class SettingsActivity extends ActionBarActivity {
     Button btn,btn2;
     private PendingIntent pendingIntent;
     int Langpos;
-TextView txttime;
+    TextView txttime;
     static final int TIME_DIALOG_ID = 1111;
     private int hour;
     private int minute;
