@@ -212,7 +212,7 @@ public void secondProcess(){
       //  Toast.makeText(SplashActivity.this,"Offline Mode is Activated",Toast.LENGTH_LONG).show();
 
         CountDownTimer countDownTimer;
-        countDownTimer = new MyCountDownTimer(1000, 1000); // 1000 = 1s
+        countDownTimer = new MyCountDownTimer(1000, 10); // 1000 = 1s
         countDownTimer.start();
         }
 
@@ -237,7 +237,7 @@ private void processCheckNewDatabase(){
                    // Toast.makeText(SplashActivity.this,"You have Latest Version of Database",Toast.LENGTH_LONG).show();
 
                     CountDownTimer countDownTimer;
-                    countDownTimer = new MyCountDownTimer(1000, 1000); // 1000 = 1s
+                    countDownTimer = new MyCountDownTimer(1000, 10); // 1000 = 1s
                     countDownTimer.start();
 
                 }
@@ -365,7 +365,7 @@ private void processDowloadandSQLinsert(final String dataVersion){
                 dialog.dismiss();
 
                 CountDownTimer countDownTimer;
-                countDownTimer = new MyCountDownTimer(10000, 1000); // 1000 = 1s
+                countDownTimer = new MyCountDownTimer(10000, 10); // 1000 = 1s
                 countDownTimer.start();
 
             //    processDowloadandSQLinsertGROPUTABLE();
@@ -414,7 +414,7 @@ private void showDialogDownloadDatabase(){
         public void onClick(DialogInterface dialog, int which) {
             // Write your code here to invoke NO event
             CountDownTimer countDownTimer;
-            countDownTimer = new MyCountDownTimer(1000, 1000); // 1000 = 1s
+            countDownTimer = new MyCountDownTimer(1000, 10); // 1000 = 1s
             countDownTimer.start();
         }
     });

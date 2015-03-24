@@ -301,7 +301,7 @@ void setWordlimitSpinner(){
         spWordLimit.setSelection(pos);
 
 
-  words = new ArrayList<String>();
+  /*words = new ArrayList<String>();
   meang = new ArrayList<String>();
     groupname= new ArrayList<String>();
 
@@ -313,7 +313,7 @@ void setWordlimitSpinner(){
     }
     c.close();
     db.close();
-    insertdataintoDATABASE();
+    insertdataintoDATABASE();*/
 
 
  }

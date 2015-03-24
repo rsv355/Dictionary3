@@ -131,6 +131,9 @@ public class MyDrawerActivity extends ActionBarActivity {
         autoText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(autoText.getWindowToken(), 0);
+
                 Intent i = new Intent(MyDrawerActivity.this, MeanPageActivity.class);
                 i.putExtra("word", temp.get(position).trim());
                 startActivity(i);
@@ -157,6 +160,9 @@ public class MyDrawerActivity extends ActionBarActivity {
                 imgSrch.setVisibility(View.VISIBLE);
                 mTitleTextView.setVisibility(View.VISIBLE);
                 autoText.setVisibility(View.GONE);
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(autoText.getWindowToken(), 0);
+
 
             }
         });
