@@ -27,6 +27,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -156,13 +157,37 @@ public class MyDrawerActivity extends ActionBarActivity {
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(autoText.getWindowToken(), 0);
 
-                    Intent i = new Intent(MyDrawerActivity.this, MeanPageActivity.class);
-                    i.putExtra("word",autoText.getText().toString().trim());
-                    startActivity(i);
 
+                    if(autoText.length()==0){
+                            Toast.makeText(MyDrawerActivity.this,"Please enter some text to search",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Intent i = new Intent(MyDrawerActivity.this, MeanPageActivity.class);
+                        i.putExtra("word", autoText.getText().toString().trim());
+                        startActivity(i);
+                    }
                     return true;
 
 
+            }
+        });
+
+
+        autoText.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(event.getRawX() >= (autoText.getRight() - autoText.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        autoText.setText("");
+
+                        return true;
+                    }
+                }
+                return false;
             }
         });
 
