@@ -338,7 +338,6 @@ public class WordMeaningPageFragment extends Fragment implements
 
                 }
 
-
             }
         });
 
