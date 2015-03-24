@@ -76,7 +76,7 @@
                 android:imeOptions="actionSearch"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:drawableRight="@drawable/clear"
+
                 android:layout_marginRight="8dp"
                 android:id="@+id/auto"/>
 

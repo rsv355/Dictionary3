@@ -9,6 +9,7 @@ import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
@@ -22,6 +23,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -212,6 +215,57 @@ public class MyDrawerActivity extends ActionBarActivity {
         });
 
 
+        autoText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.length()!=0){
+                    Drawable img = getResources().getDrawable( R.drawable.clear);
+                    autoText.setCompoundDrawablesWithIntrinsicBounds( null, null, img, null);
+
+                    autoText.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            final int DRAWABLE_LEFT = 0;
+                            final int DRAWABLE_TOP = 1;
+                            final int DRAWABLE_RIGHT = 2;
+                            final int DRAWABLE_BOTTOM = 3;
+
+                            if(event.getAction() == MotionEvent.ACTION_UP) {
+                                if(event.getRawX() >= (autoText.getRight() - autoText.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                                    autoText.setText("");
+
+                                    return true;
+                                }
+                            }
+                            else{
+
+                            }
+                            return false;
+                        }
+                    });
+
+                }
+                else{
+                    autoText.setCompoundDrawablesWithIntrinsicBounds( null, null, null, null);
+                    autoText.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            return false;
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
         autoText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -224,6 +278,7 @@ public class MyDrawerActivity extends ActionBarActivity {
                     if(autoText.length()==0){
                             Toast.makeText(MyDrawerActivity.this,"Please enter some text to search",Toast.LENGTH_SHORT).show();
                     }else {
+
                         Intent i = new Intent(MyDrawerActivity.this, MeanPageActivity.class);
                         i.putExtra("word", autoText.getText().toString().trim());
                         startActivity(i);
@@ -235,24 +290,9 @@ public class MyDrawerActivity extends ActionBarActivity {
         });
 
 
-        autoText.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                final int DRAWABLE_LEFT = 0;
-                final int DRAWABLE_TOP = 1;
-                final int DRAWABLE_RIGHT = 2;
-                final int DRAWABLE_BOTTOM = 3;
 
-                if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(event.getRawX() >= (autoText.getRight() - autoText.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                        autoText.setText("");
 
-                        return true;
-                    }
-                }
-                return false;
-            }
-        });
+
 
 
 
