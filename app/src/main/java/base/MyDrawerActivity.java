@@ -115,7 +115,7 @@ public class MyDrawerActivity extends ActionBarActivity {
        // View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
           mTitleTextView = (TextView) findViewById(R.id.title_text);
           autoText = (AutoCompleteTextView)findViewById(R.id.auto);
-        mTitleTextView.setText("News Vocab");
+        mTitleTextView.setText("News Vocabulary");
 
 
 

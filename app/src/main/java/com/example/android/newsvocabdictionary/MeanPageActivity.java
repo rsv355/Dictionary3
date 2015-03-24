@@ -30,7 +30,10 @@ public class MeanPageActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.icon_back);
 
-        toolbar.setTitle("Search");
+
+        texttoSend=getIntent().getStringExtra("word");
+
+        toolbar.setTitle("Search for : "+getIntent().getStringExtra("word"));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +49,6 @@ public class MeanPageActivity extends ActionBarActivity {
         tabs.setViewPager(pager);
 
         tabs.setDividerColor(Color.parseColor("#ffffff"));
-        texttoSend=getIntent().getStringExtra("word");
 
 
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
