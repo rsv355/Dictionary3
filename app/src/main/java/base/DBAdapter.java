@@ -31,6 +31,10 @@ public class DBAdapter {
                       "MEANING text ,"+
                       "GROUP_NAME text);";
 
+    private static final String Group_table =
+            "create table Group_table (_id integer primary key autoincrement, "+
+                    "GROUP_NAME text);";
+
 
 
 
@@ -56,11 +60,6 @@ public class DBAdapter {
                       "EX3 text ," +
                       "EX4 text ," +
                       "EX5 text ," +
-                      "MATCH1 text ," +
-                      "MATCH2 text ," +
-                      "MATCH3 text ," +
-                      "MATCH4 text ," +
-                      "MATCH5 text ," +
                       "HIN_EX1 text ," +
                       "HIN_EX2 text ," +
                       "HIN_EX3 text ," +
@@ -92,6 +91,7 @@ public class DBAdapter {
                 db.execSQL(DATABASE_CREATE);
                 db.execSQL(DATABASE_CREATE_HISTORY);
                 db.execSQL(DATABASE_CREATE_WORD_OF_DAY);
+                db.execSQL(Group_table);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -106,6 +106,9 @@ public class DBAdapter {
             db.execSQL("DROP TABLE IF EXISTS D_Word_History");
 
             db.execSQL("DROP TABLE IF EXISTS D_Word_Word_Of_Day");
+            db.execSQL("DROP TABLE IF EXISTS Group_table");
+
+
             onCreate(db);
         }
     }
@@ -146,7 +149,6 @@ public class DBAdapter {
     public long insertRecord(String CATG_ID,String GROUP_NAME,String WORD, String PRON_ENG,String MEANING_HIN
                               ,String MEANING2,String MEANING3,String MEANING4,String MEANING5
                               ,String EX1,String EX2,String EX3,String EX4,String EX5
-                              ,String MATCH1,String MATCH2,String MATCH3,String MATCH4,String MATCH5
                               ,String HIN_EX1,String HIN_EX2,String HIN_EX3,String HIN_EX4,String HIN_EX5)
     {
         ContentValues initialValues = new ContentValues();
@@ -169,19 +171,14 @@ public class DBAdapter {
         initialValues.put("EX4", EX4);//12
         initialValues.put("EX5", EX5);//13
 
-        initialValues.put("MATCH1", MATCH1);//14
-        initialValues.put("MATCH2", MATCH2);//15
-        initialValues.put("MATCH3", MATCH3);//16
-        initialValues.put("MATCH4", MATCH4);//17
-        initialValues.put("MATCH5", MATCH5);//18
 
-        initialValues.put("HIN_EX1", HIN_EX1);//19
-        initialValues.put("HIN_EX2", HIN_EX2);//20
-        initialValues.put("HIN_EX3", HIN_EX3);//21
-        initialValues.put("HIN_EX4", HIN_EX4);//22
-        initialValues.put("HIN_EX5", HIN_EX5);//23
+        initialValues.put("HIN_EX1", HIN_EX1);//14
+        initialValues.put("HIN_EX2", HIN_EX2);//15
+        initialValues.put("HIN_EX3", HIN_EX3);//16
+        initialValues.put("HIN_EX4", HIN_EX4);//17
+        initialValues.put("HIN_EX5", HIN_EX5);//18
 
-        initialValues.put("GROUP_NAME", GROUP_NAME);//24
+        initialValues.put("GROUP_NAME", GROUP_NAME);//19
 
         Log.e("insert ","ok");
 
@@ -218,6 +215,13 @@ public class DBAdapter {
     }
 
 
+    public void deleteGROUPTABLE( )
+    {
+        Log.e("record ddelted ","ok");
+        db.execSQL("delete  from Group_table");
+        //  return db.delete(DATABASE_TABLE,null );
+    }
+
     public void deleteRecord2( )
     {
         Log.e("record ddelted ","ok");
@@ -231,7 +235,16 @@ public class DBAdapter {
                 null, null, null, null, null);
     }
 */
+    public long insertGROUP(String GROUP)
+    {
+        ContentValues initialValues = new ContentValues();
 
+        initialValues.put("GROUP_NAME", GROUP);//1
+
+        Log.e("insert ","ok2");
+
+        return db.insert(Group_table, null, initialValues);
+    }
 
 
 
@@ -252,6 +265,18 @@ public class DBAdapter {
         }*/
         return cursor;
     }
+
+    public Cursor getSimilarRecord(String rowId) throws SQLException
+    {
+        String selectQuery = "SELECT * FROM D_Word_ENG_HIN WHERE WORD IN (Select GROUP_NAME from Group_table where UPPER(GROUP_NAME))= "+"\""+rowId.toString().trim().toUpperCase()+"\"";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+
+        return cursor;
+    }
+
+
+
 
     public Cursor getCategory(String CatgId) throws SQLException
     {

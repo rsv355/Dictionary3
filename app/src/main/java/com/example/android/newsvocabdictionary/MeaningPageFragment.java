@@ -412,38 +412,20 @@ public class MeaningPageFragment extends Fragment implements
 
               }
         else{
-            db.insertHistoryRecord(c.getString(2),c.getString(4),c.getString(24));  //Insert in Historydatabase
+            db.insertHistoryRecord(c.getString(2),c.getString(4),c.getString(19));  //Insert in Historydatabase
         }
 
 
 
         ex1.setText(c.getString(9));
-        ex11.setText("\'"+c.getString(19)+"\'");
+        ex11.setText("\'"+c.getString(14)+"\'");
 
         exp = new ArrayList<String>();
         exp2 = new ArrayList<String>();
         match = new ArrayList<String>();
         mean = new ArrayList<String>();
 
-        if(c.getString(14)==null&&c.getString(15)==null){
-            linearsmp.setVisibility(View.GONE);
 
-        }
-        else if(c.getString(14)==null){
-            sm1.setVisibility(View.GONE);
-            sm2.setText(c.getString(15).trim());
-            sm2.setVisibility(View.VISIBLE);
-        }
-        else if(c.getString(15)==null){
-            sm2.setVisibility(View.GONE);
-            sm1.setText(c.getString(14).trim());
-            sm1.setVisibility(View.VISIBLE);
-        }
-        else{
-            linearsmp.setVisibility(View.VISIBLE);
-            sm1.setText(c.getString(14).trim());
-            sm2.setText(c.getString(15).trim());
-        }
 
 
         sm1.setOnClickListener(new View.OnClickListener() {
@@ -475,7 +457,7 @@ public class MeaningPageFragment extends Fragment implements
         else{
             linearExp.setVisibility(View.VISIBLE);
             ex1.setText(c.getString(9));
-            ex11.setText("\'"+c.getString(19)+"\'");
+            ex11.setText("\'"+c.getString(14)+"\'");
 
         }
 
@@ -487,19 +469,19 @@ public class MeaningPageFragment extends Fragment implements
 
             if(c.getString(j)!=null){
                 exp.add(i++,c.getString(j));
-                exp2.add(k++,c.getString(j+10));
+                exp2.add(k++,c.getString(j+5));
             }
 
         }
 
-        j=0;
+        /*j=0;
         for(int kk=14;kk<=18;kk++){
             if(c.getString(kk)!=null){
                 match.add(j++,c.getString(kk));
             }
 
         }
-
+*/
         a=0;
         for(int m=4;m<=8;m++){
             if(c.getString(m)!=null){
@@ -507,6 +489,9 @@ public class MeaningPageFragment extends Fragment implements
             }
 
         }
+
+
+        fetchSimilarwords(c.getString(2));
 
         CustomAdapter adapter = new CustomAdapter(getActivity(), mean);
         meanListView.setAdapter(adapter);
@@ -556,8 +541,56 @@ public class MeaningPageFragment extends Fragment implements
 
     }
 
+public void fetchSimilarwords(String word){
+
+    db.open();
+    Cursor c = db.getSimilarRecord(word);
+    if (c.moveToFirst()) {
+        Display2(c);
+
+    }
+    else {
 
 
+    }
+    c.close();
+    db.close();
+
+
+}
+
+    private void Display2(final Cursor c){
+
+        if(c.getString(1)==null){
+            //linearsmp.setVisibility(View.GONE);
+            Toast.makeText(getActivity(),"Word is not there",Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(getActivity(),"Word is there",Toast.LENGTH_LONG).show();
+        }
+
+         /* if(c.getString(14)==null&&c.getString(15)==null){
+            linearsmp.setVisibility(View.GONE);
+
+        }
+        else if(c.getString(14)==null){
+            sm1.setVisibility(View.GONE);
+            sm2.setText(c.getString(15).trim());
+            sm2.setVisibility(View.VISIBLE);
+        }
+        else if(c.getString(15)==null){
+            sm2.setVisibility(View.GONE);
+            sm1.setText(c.getString(14).trim());
+            sm1.setVisibility(View.VISIBLE);
+        }
+        else{
+            linearsmp.setVisibility(View.VISIBLE);
+            sm1.setText(c.getString(14).trim());
+            sm2.setText(c.getString(15).trim());
+        }
+*/
+
+    }
     private void speakOut() {
         String text = texttoSpeech;
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
